@@ -1,0 +1,1436 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>Lanecraft Lab</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+    rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Newsreader:opsz,wght@6..72,400;500;600;700&display=swap"
+    rel="stylesheet" />
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "outline": "#75777e",
+            "on-surface": "#191c1d",
+            "inverse-primary": "#b9c7e4",
+            "surface-bright": "#f8f9fa",
+            "tertiary-fixed-dim": "#b2cbcd",
+            "on-tertiary": "#ffffff",
+            "inverse-surface": "#2e3132",
+            "surface-container-high": "#e7e8e9",
+            "surface-container": "#edeeef",
+            "on-primary-fixed-variant": "#39475f",
+            "on-primary": "#ffffff",
+            "primary-fixed-dim": "#b9c7e4",
+            "on-error-container": "#93000a",
+            "surface-tint": "#515f78",
+            "surface-dim": "#d9dadb",
+            "on-tertiary-fixed": "#071f21",
+            "on-background": "#191c1d",
+            "on-error": "#ffffff",
+            "on-surface-variant": "#44474d",
+            "surface-container-highest": "#e1e3e4",
+            "on-tertiary-fixed-variant": "#344b4d",
+            "tertiary-container": "#071f21",
+            "on-tertiary-container": "#70888a",
+            "tertiary": "#000000",
+            "primary-container": "#0d1c32",
+            "secondary-fixed": "#ffdf9e",
+            "on-secondary-container": "#775f28",
+            "error": "#ba1a1a",
+            "surface-container-lowest": "#ffffff",
+            "tertiary-fixed": "#cee7e9",
+            "on-primary-container": "#76849f",
+            "surface-variant": "#e1e3e4",
+            "primary": "#000000",
+            "background": "#f8f9fa",
+            "error-container": "#ffdad6",
+            "secondary": "#735b25",
+            "surface": "#f8f9fa",
+            "on-secondary-fixed-variant": "#59440f",
+            "secondary-container": "#fddc99",
+            "on-secondary": "#ffffff",
+            "inverse-on-surface": "#f0f1f2",
+            "surface-container-low": "#f3f4f5",
+            "secondary-fixed-dim": "#e2c382",
+            "primary-fixed": "#d6e3ff",
+            "on-primary-fixed": "#0d1c32",
+            "on-secondary-fixed": "#261a00",
+            "outline-variant": "#c5c6cd"
+          },
+          borderRadius: {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          spacing: {
+            "unit": "4px",
+            "margin-page": "64px",
+            "section-gap": "128px",
+            "gutter": "24px"
+          },
+          fontFamily: {
+            "body-lg": ["Inter"],
+            "label-sm": ["Inter"],
+            "headline-xl": ["Newsreader"],
+            "body-md": ["Inter"],
+            "headline-lg": ["Newsreader"]
+          },
+          fontSize: {
+            "body-lg": ["22px", { "lineHeight": "1.75", "letterSpacing": "0", "fontWeight": "400" }],
+            "label-sm": ["12px", { "lineHeight": "1", "letterSpacing": "0.1em", "fontWeight": "600" }],
+            "headline-xl": ["48px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+            "body-md": ["21px", { "lineHeight": "1.7", "letterSpacing": "0", "fontWeight": "400" }],
+            "headline-lg": ["32px", { "lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "500" }]
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+
+    .architectural-bg {
+      background-image:
+        linear-gradient(to right, rgba(117, 119, 126, 0.05) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(117, 119, 126, 0.05) 1px, transparent 1px);
+      background-size: 24px 24px;
+    }
+
+    details>summary::-webkit-details-marker {
+      display: none;
+    }
+
+    details summary {
+      list-style: none;
+    }
+
+    details[open] summary .expand-icon {
+      transform: rotate(180deg);
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* ── Mobile Menu ── */
+    #mobile-menu {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background: #ffffff;
+      border-top: 1px solid #e2e8f0;
+      border-bottom: 1px solid #e2e8f0;
+      z-index: 49;
+      flex-direction: column;
+      gap: 0;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.10);
+    }
+
+    #mobile-menu.open {
+      display: flex;
+    }
+
+    #mobile-menu a {
+      display: block;
+      padding: 18px 24px;
+      font-size: 15px;
+      font-weight: 500;
+      color: #0A192F;
+      text-decoration: none;
+      border-bottom: 1px solid #f1f5f9;
+      letter-spacing: 0.04em;
+      transition: background 0.2s;
+    }
+
+    #mobile-menu a:last-child {
+      border-bottom: none;
+    }
+
+    #mobile-menu a:active,
+    #mobile-menu a:hover {
+      background: #f8f9fa;
+    }
+
+    #mobile-menu .mobile-contact-btn {
+      margin: 16px 24px 20px;
+      background: #0A192F;
+      color: #fff;
+      text-align: center;
+      padding: 14px 24px;
+      text-transform: uppercase;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      border-bottom: none;
+      border-radius: 2px;
+    }
+
+    #mobile-menu .mobile-contact-btn:hover {
+      background: #162d4d;
+    }
+
+    #hamburger-btn .icon-close {
+      display: none;
+    }
+
+    #hamburger-btn.active .icon-menu {
+      display: none;
+    }
+
+    #hamburger-btn.active .icon-close {
+      display: inline;
+    }
+
+    /* ── Mobile Layout Fixes ── */
+    @media (max-width: 767px) {
+      section#services {
+        padding-left: 20px;
+        padding-right: 20px;
+        padding-top: 32px;
+        padding-bottom: 32px;
+      }
+
+      .py-section-gap {
+        padding-top: 32px !important;
+        padding-bottom: 32px !important;
+      }
+
+      .mb-section-gap {
+        margin-bottom: 32px !important;
+      }
+
+      /* kill the enforced min-height on About hero — causes huge blank space on mobile */
+      .min-h-\[500px\] {
+        min-height: 0 !important;
+      }
+
+      /* tighten the clients hero too */
+      .py-16 {
+        padding-top: 24px !important;
+        padding-bottom: 24px !important;
+      }
+
+      /* collapse gap between stacked grid rows (Mission, Featured Press, Leadership etc) */
+      .gap-gutter {
+        gap: 8px !important;
+      }
+
+      /* heading columns (The Mission, Featured Press, Leadership) — remove bottom margin when stacked */
+      .md\:col-span-4.mb-8,
+      .md\:col-span-4.mb-8.md\:mb-0 {
+        margin-bottom: 4px !important;
+      }
+
+      /* disable sticky headings on mobile — causes heading to float away from its content */
+      .sticky {
+        position: static !important;
+      }
+
+      h1.font-headline-xl {
+        font-size: 32px;
+        line-height: 1.15;
+      }
+
+      h2.font-headline-xl {
+        font-size: 28px;
+        line-height: 1.2;
+      }
+
+      .grid.grid-cols-1.md\:grid-cols-12.gap-unit.auto-rows-\[300px\] {
+        grid-template-columns: 1fr;
+        auto-rows: auto;
+      }
+
+      /* min-height only for bento grid cards, not section heading columns */
+      .gap-unit > .md\:col-span-8,
+      .gap-unit > .md\:col-span-4 {
+        height: auto;
+        min-height: 220px;
+      }
+
+      #contact-form {
+        padding: 40px 20px;
+      }
+
+      section#about .py-section-gap.px-gutter {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+
+      .w-full.md\:w-1\/3 {
+        max-width: 240px;
+      }
+
+      .grid.grid-cols-1.md\:grid-cols-3 {
+        grid-template-columns: 1fr;
+      }
+
+      .grid.grid-cols-1.md\:grid-cols-2.gap-12 {
+        gap: 24px;
+      }
+
+      footer .grid {
+        gap: 32px;
+      }
+
+      .flex.flex-wrap.justify-center {
+        gap: 20px;
+      }
+
+      .aspect-\[4\/5\] {
+        aspect-ratio: 4/3;
+      }
+
+      .w-full.h-\[50vh\] {
+        height: 40vw;
+        min-height: 200px;
+      }
+
+      body {
+        overflow-x: hidden;
+      }
+
+      section#clients .py-section-gap {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+
+      section#clients .px-gutter {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+
+      .p-8.md\:p-16 {
+        padding: 24px 20px;
+      }
+
+      .p-12.md\:p-24 {
+        padding: 40px 20px;
+      }
+
+      /* Subtle fade-in only on mobile — no translate/scale/delay */
+      .scroll-reveal,
+      .testimonial-card {
+        opacity: 0;
+        transform: none !important;
+        transition: opacity 0.25s ease !important;
+        animation: none !important;
+      }
+      .scroll-reveal.in-view,
+      .testimonial-card.in-view {
+        opacity: 1 !important;
+        transform: none !important;
+      }
+      .testimonial-card.t-active {
+        transform: none !important;
+        opacity: 1 !important;
+      }
+
+      /* header and footer keep their own px-8 padding on mobile */
+
+      /* 3-col hero: collapse side strips on mobile */
+      [style*="grid-template-columns:220px"] {
+        grid-template-columns: 70px 1fr 70px !important;
+      }
+
+      /* Press logos: 2-column grid — wider cells fit WSJ properly */
+      .press-logos-grid {
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px 16px;
+        align-items: center;
+        justify-items: center;
+      }
+      .press-logos-grid img {
+        height: auto !important;
+        max-height: 38px !important;
+        max-width: 100% !important;
+        object-fit: contain !important;
+      }
+      /* WSJ is very wide — limit height so it renders proportionally */
+      .press-logos-grid img:first-child {
+        max-height: 22px !important;
+      }
+      .press-logos-grid .logo-full-row {
+        grid-column: 1 / -1;
+        max-height: 30px !important;
+      }
+
+      /* Reduce body font sizes on mobile — 21px is too large */
+      .text-body-md { font-size: 17px !important; line-height: 1.6 !important; }
+      .text-body-lg { font-size: 17px !important; line-height: 1.65 !important; }
+      p[style*="font-size:22px"] { font-size: 17px !important; line-height: 1.65 !important; }
+
+      /* Ken Burns hero: cap height on mobile */
+      .hero-kenburns {
+        max-height: 280px;
+      }
+
+      /* Hero overlay text: centered, one line on mobile */
+      .hero-kenburns-wrapper .absolute {
+        justify-content: center;
+        padding-bottom: 14px;
+      }
+      .hero-kenburns-wrapper .absolute p {
+        text-align: center;
+        letter-spacing: 0.04em;
+        font-size: 9px !important;
+        width: 100%;
+      }
+
+      /* Featured Engagements: stack logos on mobile */
+      .grid.grid-cols-3 {
+        grid-template-columns: 1fr;
+      }
+
+      /* Leadership section: portrait comes AFTER text on mobile */
+      .flex.flex-col.md\\:flex-row.gap-10 {
+        flex-direction: column;
+      }
+    }
+
+    /* ── Ken Burns hero animation ── */
+    @keyframes kenburns-slow {
+      0%   { transform: scale(1.0) translate(0, 0); }
+      50%  { transform: scale(1.08) translate(-1.5%, 0.8%); }
+      100% { transform: scale(1.0) translate(0, 0); }
+    }
+    .hero-kenburns-wrapper {
+      overflow: hidden;
+      position: relative;
+      width: 100%;
+    }
+    .hero-kenburns {
+      animation: kenburns-slow 28s ease-in-out infinite;
+      will-change: transform;
+      display: block;
+      width: 100%;
+      max-height: 560px;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    /* ── Press / media logo hover ── */
+    .press-logo {
+      opacity: 0.82;
+      transition: transform 0.35s ease, opacity 0.35s ease;
+      display: inline-block;
+    }
+    .press-logo:hover {
+      transform: scale(1.08);
+      opacity: 1;
+    }
+
+    /* ── Client engagement card hover ── */
+    .client-card {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .client-card:hover {
+      transform: scale(1.05) !important;
+      transition: transform 0.3s ease !important;
+    }
+
+    /* ── Testimonial scroll-in animation ── */
+    .testimonial-card {
+      opacity: 0;
+      transform: translateY(36px) scale(0.97);
+      transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .testimonial-card.in-view {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+
+    /* ── Testimonial spotlight: zooms up when centred in viewport ── */
+    .testimonial-card.in-view {
+      transition: opacity 0.7s ease, transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .testimonial-card.t-active {
+      transform: scale(1.04) !important;
+      opacity: 1 !important;
+    }
+
+    /* ── Nav link hover ── */
+    header nav a {
+      transition: color 0.25s ease, transform 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+      display: inline-block;
+    }
+    header nav a:hover {
+      transform: scale(1.1);
+    }
+
+    /* ── Contact button hover ── */
+    header a.contact-btn {
+      transition: background-color 0.2s ease, transform 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    header a.contact-btn:hover {
+      transform: scale(1.06);
+    }
+
+    /* ── Accordion row hover ── */
+    .accordion-item button {
+      transition: background-color 0.2s ease;
+    }
+    .accordion-item button:hover {
+      background-color: rgba(0, 0, 0, 0.025);
+    }
+    .accordion-item button span:first-child {
+      display: inline-block;
+      transition: transform 0.28s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .accordion-item button:hover span:first-child {
+      transform: scale(1.04) translateX(6px);
+    }
+
+    /* ── Consult button one-time pulse ── */
+    @keyframes pulse-once {
+      0%   { transform: scale(1); }
+      35%  { transform: scale(1.03); }
+      65%  { transform: scale(1.015); }
+      100% { transform: scale(1); }
+    }
+    .consult-btn-pulse {
+      animation: pulse-once 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+
+    /* ── General scroll-reveal (fade-up) ── */
+    .scroll-reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.65s ease, transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .scroll-reveal.in-view {
+      opacity: 1;
+      transform: none;
+    }
+  </style>
+</head>
+
+<body
+  class="bg-background text-on-background font-body-md antialiased selection:bg-secondary-container selection:text-on-secondary-container">
+
+  <!-- ── Header ── -->
+  <header class="bg-white dark:bg-[#0A192F] top-0 border-b border-slate-200 dark:border-slate-800 sticky z-50">
+    <div style="position:relative;">
+      <div class="flex justify-between items-center h-20 px-8 md:px-12 w-full max-w-screen-2xl mx-auto">
+        <a href="#about"
+          class="text-2xl font-bold tracking-tighter text-[#0A192F] dark:text-white uppercase font-headline-lg">
+          Lanecraft Lab
+        </a>
+        <nav class="hidden md:flex gap-8 items-center font-serif text-lg tracking-tight">
+          <a href="#about"
+            class="text-slate-500 dark:text-slate-400 font-medium hover:text-[#0A192F] dark:hover:text-white transition-colors duration-300">About</a>
+          <a href="#services"
+            class="text-slate-500 dark:text-slate-400 font-medium hover:text-[#0A192F] dark:hover:text-white transition-colors duration-300">Services</a>
+          <a href="#clients"
+            class="text-slate-500 dark:text-slate-400 font-medium hover:text-[#0A192F] dark:hover:text-white transition-colors duration-300">Clients</a>
+        </nav>
+        <a href="#contact-form"
+          class="contact-btn bg-[#0A192F] text-white px-6 py-2 uppercase font-label-sm tracking-widest text-label-sm hover:bg-opacity-90 hidden md:block">
+          Contact
+        </a>
+        <button id="hamburger-btn" class="md:hidden text-on-surface flex items-center justify-center w-10 h-10"
+          aria-label="Toggle navigation" aria-expanded="false">
+          <span class="material-symbols-outlined text-2xl icon-menu">menu</span>
+          <span class="material-symbols-outlined text-2xl icon-close">close</span>
+        </button>
+      </div>
+      <!-- Mobile Dropdown Menu -->
+      <div id="mobile-menu" role="navigation" aria-label="Mobile navigation">
+        <a href="#about" onclick="closeMobileMenu()">About</a>
+        <a href="#services" onclick="closeMobileMenu()">Services</a>
+        <a href="#clients" onclick="closeMobileMenu()">Clients</a>
+        <a href="#contact-form" onclick="closeMobileMenu()" class="mobile-contact-btn">Contact</a>
+      </div>
+    </div>
+  </header>
+
+
+  <!-- ══════════════════════════════════════════
+     SECTION: ABOUT
+══════════════════════════════════════════ -->
+  <section id="about" class="architectural-bg">
+
+    <!-- ── Hero: full-width logo cover ── -->
+    <div class="w-full">
+      <picture>
+        <source media="(max-width: 767px)" srcset="formobile.png" />
+        <img alt="Lanecraft Lab" src="LancraftLabCover.webp" style="width:100%; display:block; object-fit:cover;" />
+      </picture>
+    </div>
+
+    <!-- About Us text -->
+    <div
+      class="py-section-gap px-gutter md:px-margin-page md:grid md:grid-cols-12 md:gap-gutter md:items-center max-w-screen-2xl mx-auto">
+      <div class="md:col-span-8 col-start-1 scroll-reveal">
+        <span class="font-label-sm text-label-sm uppercase text-outline tracking-widest mb-4 block">About Us</span>
+        <p class="text-on-surface max-w-2xl text-pretty leading-relaxed" style="font-size:22px; line-height:1.75;">Lanecraft Lab
+          is a strategic advisory and communications firm that helps senior professionals and organizations boost their
+          visibility, share their voice across multiple platforms, and reposition their narratives for customers,
+          distributors, boards and investors. We operate at the intersection of strategy, systems, and storytelling. We
+          design outcomes-driven precision roadmaps for navigating inflection points, whether it's an M&amp;A
+          transaction, a new initiative, a partnership with one or more government bodies, an executive transition, or
+          advisory on operational risk management and governance frameworks.</p>
+      </div>
+    </div>
+
+    <!-- ── Koi Hero ── -->
+    <div class="hero-kenburns-wrapper border-t border-outline-variant/20">
+      <img
+        src="hero-wave.jpg"
+        alt="Aerial view of an ocean wave — forward momentum and depth"
+        class="hero-kenburns"
+        style="object-position: center 40%;"
+      />
+      <div class="absolute inset-0 flex items-end pb-8 px-8 md:px-margin-page"
+        style="background: linear-gradient(to top, rgba(10,25,47,0.55) 0%, transparent 60%);">
+        <p class="text-white/75 font-label-sm text-label-sm uppercase tracking-widest"
+          style="font-size:11px; letter-spacing:0.18em;">Client-driven &middot; Purpose-led &middot; Outcome-focused</p>
+      </div>
+    </div>
+
+    <!-- The Mission -->
+    <div
+      class="py-section-gap px-gutter md:px-margin-page md:grid md:grid-cols-12 md:gap-gutter border-t border-outline-variant/30 max-w-screen-2xl mx-auto">
+      <div class="md:col-span-4 col-start-1 mb-8 md:mb-0 scroll-reveal">
+        <h2 class="font-headline-lg text-headline-lg text-primary sticky top-32">The Mission</h2>
+      </div>
+      <div class="md:col-span-8 scroll-reveal" data-delay="120">
+        <p class="font-body-lg text-body-lg text-on-surface leading-loose mb-10">Lanecraft Lab helps B2B and B2C brands
+          scale by placing their ideas, expertise, and innovations in front of target stakeholder groups that can drive
+          top-lines and generate repeat business for our clients. We specialize in earned media visibility across
+          Tier-1, trade, and specialist outlets. Media outlets where our clients have been featured include:</p>
+        <!-- Media outlet logos -->
+        <div class="press-logos-grid flex flex-wrap items-center gap-8 md:gap-12 mt-2">
+          <img src="WSJ+logo.webp" alt="The Wall Street Journal" class="press-logo"
+            style="height:30px; object-fit:contain;" />
+          <img src="TheStreet+logo.webp" alt="The Street" class="press-logo"
+            style="height:42px; object-fit:contain;" />
+          <img src="CNBC+logo.webp" alt="CNBC" class="press-logo"
+            style="height:50px; object-fit:contain;" />
+          <img src="Golf+Digest.webp" alt="Golf Digest" class="press-logo"
+            style="height:48px; object-fit:contain;" />
+          <img src="Forbes_logo.svg" alt="Forbes" class="press-logo"
+            style="height:34px; object-fit:contain;" />
+          <img src="morning-brew-logo.svg" alt="Morning Brew" class="press-logo"
+            style="height:44px; object-fit:contain;" />
+          <img src="bw-main-logo.webp" alt="BW BusinessWorld" class="press-logo logo-full-row"
+            style="height:34px; object-fit:contain;" />
+        </div>
+      </div>
+    </div>
+
+
+
+    <!-- Featured Press -->
+    <div
+      class="py-section-gap px-gutter md:px-margin-page md:grid md:grid-cols-12 md:gap-gutter border-t border-outline-variant/30 bg-surface-container-low">
+      <div class="md:col-span-4 col-start-1 mb-8 md:mb-0 max-w-screen-2xl mx-auto scroll-reveal">
+        <h2 class="font-headline-lg text-headline-lg text-primary">Featured Press</h2>
+      </div>
+      <div class="md:col-span-8 max-w-screen-2xl mx-auto scroll-reveal" data-delay="120">
+        <a href="https://www.foundedbywomen.org/women-who-lead/from-wall-street-journal-to-strategic-advisor-how-nish-amarnath-built-lanecraft-lab-on-the-power-of-story-architecture/"
+          target="_blank" rel="noopener noreferrer"
+          class="font-body-lg text-body-lg font-medium hover:underline transition-colors" style="color:#1a56db;">
+          From Wall Street Journal to Strategic Advisor: How Nish Amarnath Built Lanecraft Lab on the Power of Story
+          Architecture
+        </a>
+        <p class="font-body-md text-body-md text-on-surface-variant mt-3">- Published by <em>Founded by Women</em>,
+          October 2025</p>
+      </div>
+    </div>
+
+    <!-- Our Leadership -->
+    <div class="py-section-gap px-gutter md:px-margin-page border-t border-outline-variant/30 max-w-screen-2xl mx-auto">
+      <h2 class="font-headline-lg text-headline-lg text-primary mb-10 scroll-reveal">Our Leadership</h2>
+      <div class="flex flex-col md:flex-row gap-10 md:gap-16 items-start">
+        <!-- Text block (left on desktop) -->
+        <div class="w-full md:w-3/5 space-y-4 font-body-md text-body-md text-on-surface-variant scroll-reveal" data-delay="100">
+          <p>Nish Amarnath is the founder of Lanecraft Lab, a strategic advisory and communications firm helping
+            organizations and senior professionals clarify their narratives, strengthen stakeholder relationships, and
+            drive visibility across media, capital markets, and institutional channels. She brings to this work over a
+            decade of experience in capital-intensive, high-stakes sectors — leading editorial teams at Institutional
+            Investor and Industry Dive, advising on communications strategy for global organizations, and steering a
+            public diplomacy initiative for the UK Government. Her writing has appeared in Tier-1 and trade media
+            outlets including <em>The Wall Street Journal</em>, Reuters, TheStreet.com, and <em>S&amp;P Global</em>.
+            Nish majored in Economics with Distinction, and holds postgraduate degrees from the London School of
+            Economics and Columbia University, where she was a James W. Robins Reporting Fellow.</p>
+          <p class="pt-4 font-body-md text-body-md text-on-surface">If you'd like to work with us, contact us at <a
+              href="mailto:comms@lanecraftlab.com"
+              class="text-secondary underline hover:text-primary transition-colors">comms@lanecraftlab.com</a></p>
+        </div>
+        <!-- Portrait (right on desktop) -->
+        <div class="w-full md:w-2/5 flex-shrink-0 scroll-reveal" data-delay="220">
+          <img alt="Portrait of Nish Amarnath" src="nishamarnath.png"
+            class="w-full max-w-sm md:max-w-full object-cover object-top rounded-sm shadow-md"
+            style="max-height:480px;" />
+          <div class="mt-4">
+            <p class="font-headline-lg text-headline-lg text-primary">Nish Amarnath</p>
+            <p class="font-label-sm text-label-sm text-outline uppercase tracking-widest mt-1">Founder &amp; Managing
+              Partner</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Advisory Committee -->
+    <div class="py-section-gap px-gutter md:px-margin-page border-t border-outline-variant/30 max-w-screen-2xl mx-auto">
+      <h2 class="font-headline-lg text-headline-lg text-primary mb-4 scroll-reveal">Advisory Committee</h2>
+      <p class="font-body-md text-body-md text-on-surface-variant mb-2 max-w-3xl scroll-reveal" data-delay="100">Lanecraft Lab is building a circle of
+        advisors whose experience spans public diplomacy, international development, capital markets, energy, AI,
+        healthcare, financial services, and organizational transformation. Our advisory members offer insight,
+        perspective, and strategic foresight as we scale our work at the intersection of narrative intelligence, capital
+        strategy, and systems alignment.</p>
+      <p class="font-label-sm text-label-sm text-on-surface uppercase tracking-widest mb-8 mt-6">Current members
+        include:</p>
+      <div class="space-y-8">
+        <div class="border-t border-outline-variant/50 pt-6 scroll-reveal" data-delay="0">
+          <p class="font-headline-lg text-headline-lg text-primary mb-1">Jonathan Ward</p>
+          <p class="font-label-sm text-label-sm text-outline uppercase tracking-widest mb-3" style="font-size:13px;">International Affairs &amp;
+            Trade Advisor · Chair, Wisconsin World Affairs Council</p>
+          <p class="font-body-md text-body-md text-on-surface-variant max-w-2xl">Jonathan Ward, International Affairs and Trade
+            Advisor, and Chair of the Wisconsin World Affairs Council — Jon brings extensive experience in diplomacy,
+            public affairs, trade policy, and national security strategy. Over the course of his career, he has served
+            in Saudi Arabia, Papua New Guinea, Iraq, Pakistan, India, Brazil, and Washington, D.C., working across
+            market access, investment attraction, supply chains, and government relations.</p>
+        </div>
+        <div class="border-t border-outline-variant/50 pt-6 scroll-reveal" data-delay="130">
+          <p class="font-headline-lg text-headline-lg text-primary mb-1">David Trask</p>
+          <p class="font-label-sm text-label-sm text-outline uppercase tracking-widest mb-3" style="font-size:13px;">National Director, ARC
+            Facilities · Host, Facility Voices Podcast</p>
+          <p class="font-body-md text-body-md text-on-surface-variant max-w-2xl">David Trask, National Director at ARC Facilities
+            and the host of Facility Voices Podcast — David brings deep facilities and operations insights that ground
+            our strategies in real-world use. He has spent years translating complex building realities into practical
+            decisions for hospitals, schools, stadiums, and public agencies. His ability to bridge ground-level
+            operations with leadership priorities is invaluable for our work at the intersection of strategy, systems,
+            and stakeholder outcomes.</p>
+        </div>
+        <div class="border-t border-outline-variant/50 pt-6 scroll-reveal" data-delay="260">
+          <p class="font-headline-lg text-headline-lg text-primary mb-1">Dr. Jason Baker</p>
+          <p class="font-label-sm text-label-sm text-outline uppercase tracking-widest mb-3" style="font-size:13px;">Assistant Professor of
+            Medicine &amp; Attending Endocrinologist · Cornell Medical College, New York</p>
+          <p class="font-body-md text-body-md text-on-surface-variant max-w-2xl">Dr. Jason Baker, Assistant Professor of Medicine
+            and Attending Endocrinologist at Cornell Medical College in New York — Dr. Baker founded Diabetes
+            Empowerment International, formerly Marjorie's Fund, a nonprofit advancing education, access, and advocacy
+            for people with Type 1 diabetes. With deep experience across clinical care, global health, and nonprofit
+            leadership, he brings strategic insight to Lanecraft Lab's work at the intersection of health equity, and
+            systems change.</p>
+        </div>
+        <div class="border-t border-outline-variant/50 pt-6">
+          <p class="font-body-md text-body-md text-on-surface-variant italic">Additional members will be listed here as
+            the committee expands.</p>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="py-section-gap px-gutter md:px-margin-page flex flex-col items-center justify-center text-center bg-primary-container border-t border-outline-variant/30 scroll-reveal">
+      <h2 class="font-headline-xl text-headline-xl mb-6 text-on-primary">Initiate Dialogue</h2>
+      <p class="font-body-lg text-body-lg mb-10 max-w-xl text-on-primary/80">Engage Lanecraft Lab to architect your
+        organization's strategic narrative and drive measurable outcomes.</p>
+      <a class="bg-on-primary text-primary-container px-8 py-4 font-label-sm text-label-sm uppercase tracking-widest hover:bg-surface-container-highest transition-colors flex items-center gap-3"
+        href="mailto:comms@lanecraftlab.com">
+        <span class="material-symbols-outlined">mail</span>
+        comms@lanecraftlab.com
+      </a>
+    </div>
+
+  </section>
+  <!-- ══════════════════════════════════════════
+     SECTION: SERVICES
+══════════════════════════════════════════ -->
+  <section id="services" class="max-w-screen-2xl mx-auto px-gutter md:px-margin-page py-section-gap">
+
+    <!-- Intro text -->
+    <p class="font-body-lg text-body-lg text-on-surface-variant max-w-3xl mb-16 leading-relaxed scroll-reveal">We shape the stories
+      that influence decisions. We help leaders and organizations communicate strategy and value to stakeholders beyond
+      the media, from boards, investors, and lenders to customers, distributors, and regulators.</p>
+
+    <!-- WHAT WE OFFER accordion -->
+    <div class="mb-16">
+      <h2 class="font-headline-xl text-headline-xl text-primary mb-8 uppercase scroll-reveal"
+        style="font-family:Georgia,serif; letter-spacing:0.04em;">What We Offer</h2>
+      <div class="border-t border-outline-variant/60">
+
+        <!-- 1: Corporate Governance -->
+        <div class="accordion-item border-b border-outline-variant/60">
+          <button onclick="toggleAccordion(this)" class="w-full flex justify-between items-center py-5 text-left group"
+            aria-expanded="false">
+            <span class="font-label-sm text-label-sm uppercase tracking-widest text-on-surface font-bold"
+              style="font-size:16px; letter-spacing:0.08em;">Corporate Governance</span>
+            <span class="accordion-icon text-on-surface-variant text-2xl font-light leading-none select-none">+</span>
+          </button>
+          <div class="accordion-body hidden pb-6">
+            <p class="font-body-md text-body-md text-on-surface-variant max-w-3xl leading-relaxed">Advisory support for
+              building resilient governance frameworks, including CEO succession planning, best practices for board
+              appointments, executive search, operational risk identification, and mitigation strategies. Tailored to
+              organizations navigating growth, restructuring, or leadership transitions.</p>
+          </div>
+        </div>
+
+        <!-- 2: Stakeholder Engagement -->
+        <div class="accordion-item border-b border-outline-variant/60">
+          <button onclick="toggleAccordion(this)" class="w-full flex justify-between items-center py-5 text-left group"
+            aria-expanded="false">
+            <span class="font-label-sm text-label-sm uppercase tracking-widest text-on-surface font-bold"
+              style="font-size:16px; letter-spacing:0.08em;">Stakeholder Engagement and Positioning</span>
+            <span class="accordion-icon text-on-surface-variant text-2xl font-light leading-none select-none">+</span>
+          </button>
+          <div class="accordion-body hidden pb-6">
+            <p class="font-body-md text-body-md text-on-surface-variant max-w-3xl leading-relaxed">Strategic roadmaps to
+              strengthen engagement with key stakeholders—including investors, lenders, customers, and media. Services
+              include narrative positioning, communications strategy, go-to-market and product launch support, media
+              training and briefings, and development of high-impact collateral (e.g., pitch decks, case studies, press
+              kits, messaging frameworks).</p>
+          </div>
+        </div>
+
+        <!-- 3: Media and Public Voice Strategy -->
+        <div class="accordion-item border-b border-outline-variant/60">
+          <button onclick="toggleAccordion(this)" class="w-full flex justify-between items-center py-5 text-left group"
+            aria-expanded="false">
+            <span class="font-label-sm text-label-sm uppercase tracking-widest text-on-surface font-bold"
+              style="font-size:16px; letter-spacing:0.08em;">Media and Public Voice Strategy</span>
+            <span class="accordion-icon text-on-surface-variant text-2xl font-light leading-none select-none">+</span>
+          </button>
+          <div class="accordion-body hidden pb-6">
+            <p class="font-body-md text-body-md text-on-surface-variant max-w-3xl mb-4 leading-relaxed">Executive-level
+              guidance for building or recalibrating public presence. Includes:</p>
+            <ul class="font-body-md text-body-md text-on-surface-variant max-w-3xl space-y-2">
+              <li class="flex gap-2"><span class="text-outline">·</span> Media outreach strategy</li>
+              <li class="flex gap-2"><span class="text-outline">·</span> Production of content such as blogs, thought
+                leadership, advisories, customer stories, and press releases</li>
+              <li class="flex gap-2"><span class="text-outline">·</span> Social and digital visibility strategy</li>
+              <li class="flex gap-2"><span class="text-outline">·</span> Executive talking points and public speech
+                frameworks</li>
+              <li class="flex gap-2"><span class="text-outline">·</span> Crisis and reputation management</li>
+              <li class="flex gap-2"><span class="text-outline">·</span> Brand architecture and development</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- 4: Sustainability and Energy Efficiency -->
+        <div class="accordion-item border-b border-outline-variant/60">
+          <button onclick="toggleAccordion(this)" class="w-full flex justify-between items-center py-5 text-left group"
+            aria-expanded="false">
+            <span class="font-label-sm text-label-sm uppercase tracking-widest text-on-surface font-bold"
+              style="font-size:16px; letter-spacing:0.08em;">Sustainability and Energy Efficiency</span>
+            <span class="accordion-icon text-on-surface-variant text-2xl font-light leading-none select-none">+</span>
+          </button>
+          <div class="accordion-body hidden pb-6">
+            <p class="font-body-md text-body-md text-on-surface-variant max-w-3xl mb-4 leading-relaxed">Advisory on
+              embedding sustainability into operational strategy. Includes:</p>
+            <ul class="font-body-md text-body-md text-on-surface-variant max-w-3xl space-y-2">
+              <li class="flex gap-2"><span class="text-outline">·</span> Energy efficiency assessments and vendor audits
+              </li>
+              <li class="flex gap-2"><span class="text-outline">·</span> ESG-aligned operational frameworks</li>
+              <li class="flex gap-2"><span class="text-outline">·</span> Carbon footprint reduction strategies</li>
+              <li class="flex gap-2"><span class="text-outline">·</span> Resource optimization and reporting metrics
+              </li>
+              <li class="flex gap-2"><span class="text-outline">·</span> Strategic alignment with regulatory, lender,
+                and investor-driven sustainability goals</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- 5: 1:1 Strategy Consults -->
+        <div class="accordion-item border-b border-outline-variant/60">
+          <button onclick="toggleAccordion(this)" class="w-full flex justify-between items-center py-5 text-left group"
+            aria-expanded="false">
+            <span class="font-label-sm text-label-sm uppercase tracking-widest text-on-surface font-bold"
+              style="font-size:16px; letter-spacing:0.08em;">1:1 Strategy Consults</span>
+            <span class="accordion-icon text-on-surface-variant text-2xl font-light leading-none select-none">+</span>
+          </button>
+          <div class="accordion-body hidden pb-6">
+            <p class="font-body-md text-body-md text-on-surface-variant max-w-3xl mb-4 leading-relaxed">These 1:1
+              sessions are intended for mission-driven professionals seeking guidance on leadership, launching
+              businesses, job interview storytelling, performance review preparation, or developing book projects,
+              op-eds, and thought leadership reports. I offer three types of sessions:</p>
+            <ul class="font-body-md text-body-md text-on-surface-variant max-w-3xl space-y-4">
+              <li><strong>· Career development coaching:</strong> Job search strategies, interview storytelling,
+                performance review preparation, advisory on upward mobility and career transitions, salary negotiation
+              </li>
+              <li><strong>· Narrative strategy consults:</strong> Best for professionals and founders seeking guidance
+                on leadership development</li>
+              <li><strong>· Book pathway sessions:</strong> Best for individuals seeking guidance on fiction or
+                non-fiction book projects or special reports</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- WHAT CLIENTS ARE SAYING -->
+    <div class="mb-16">
+      <h2 class="font-headline-xl text-headline-xl text-primary mb-10 uppercase scroll-reveal"
+        style="font-family:Georgia,serif; letter-spacing:0.04em;">What Clients Are Saying</h2>
+      <div class="space-y-10">
+
+        <div class="testimonial-card border-t border-outline-variant/40 pt-8">
+          <p class="font-body-lg text-body-lg text-on-surface-variant italic leading-relaxed max-w-3xl">"My experience
+            with Nish was delightful, in every sense of the word. She not only asked the right questions to help me get
+            more clarity on my goals, but validated my approach and suggested actionable items to develop my personal
+            brand. And this was just over an hour of her time. Can't imagine what she can do with additional hours of
+            engagement. Highly recommend her if you need strategic clarity and direction in your career!"</p>
+          <p class="font-label-sm text-label-sm text-on-surface mt-4 uppercase tracking-widest">— Quratulain Tejani,
+            reporter at EQDerivatives. Aug. 2, 2025</p>
+        </div>
+
+        <div class="testimonial-card border-t border-outline-variant/40 pt-8">
+          <p class="font-body-lg text-body-lg text-on-surface-variant italic leading-relaxed max-w-3xl">"I thoroughly
+            enjoyed dealing with a true professional both knowledgeable and caring. I would highly recommend Nish."</p>
+          <p class="font-label-sm text-label-sm text-on-surface mt-4 uppercase tracking-widest">— Kevin J. Burke, NYPD
+            lieutenant (Ret.). July 8, 2025</p>
+        </div>
+
+        <div class="testimonial-card border-t border-outline-variant/40 pt-8">
+          <p class="font-body-lg text-body-lg text-on-surface-variant italic leading-relaxed max-w-3xl">"I am immensely
+            grateful for Nish's time and effort she put into collaborating with me on my project. Her words are
+            beautifully honest, insightful and catered to the audience I wanted. If given the opportunity, I would
+            certainly work with her again. A breath of fresh air; thank you Nish!"</p>
+          <p class="font-label-sm text-label-sm text-on-surface mt-4 uppercase tracking-widest">— Anushka Kar,
+            playwright, producer and actor. June 16, 2025</p>
+        </div>
+
+        <div class="testimonial-card border-t border-outline-variant/40 pt-8">
+          <p class="font-body-lg text-body-lg text-on-surface-variant italic leading-relaxed max-w-3xl">"I worked with
+            Nish to upgrade my resumé to make me more marketable. She really helped me take the content and layout to
+            the next level. 10/10 would recommend!"</p>
+          <p class="font-label-sm text-label-sm text-on-surface mt-4 uppercase tracking-widest">— Rachel Curtis, LCSW.
+            Oct. 17, 2025</p>
+        </div>
+
+        <div class="testimonial-card border-t border-outline-variant/40 pt-8">
+          <p class="font-body-lg text-body-lg text-on-surface-variant italic leading-relaxed max-w-3xl">"Nish came
+            prepared to our career coaching conversation. She asked great questions and had concrete feedback on how I
+            could grow."</p>
+          <p class="font-label-sm text-label-sm text-on-surface mt-4 uppercase tracking-widest">— Vasant Laplam,
+            journalist. June 9, 2025</p>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- LANECRAFT LAB IS OPEN FOR CONSULTS -->
+    <div id="contact-form" class="mb-12">
+      <h2 class="font-headline-xl text-headline-xl text-primary mb-6 uppercase"
+        style="font-family:Georgia,serif; letter-spacing:0.04em;">Lanecraft Lab Is Open for Consults</h2>
+      <p class="font-body-lg text-body-lg text-on-surface-variant mb-4 max-w-3xl leading-relaxed">Whether you're
+        navigating a career shift, refining your narrative, or exploring new creative terrain, this form helps us better
+        understand where you are and how Lanecraft Lab can best support you.</p>
+      <p class="font-body-lg text-body-lg text-on-surface-variant mb-8 max-w-3xl leading-relaxed">Submitting the form
+        does not lock you into a session, but it helps us tailor our first conversation to your needs. I'll follow up
+        with next steps once I've reviewed your responses.</p>
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSc4I7NXqP8AvncCu-UIK3pR7l7SA7PQuqK2hoiChlob6o86Bw/viewform"
+        target="_blank" rel="noopener noreferrer"
+        class="consult-btn block w-full text-center py-6 uppercase font-label-sm text-label-sm tracking-widest transition-all duration-300"
+        style="border: 2px solid #0A192F; color: #0A192F; background: transparent; font-size: 12px; letter-spacing: 0.14em;"
+        onmouseover="this.style.background='#0A192F'; this.style.color='#ffffff';"
+        onmouseout="this.style.background='transparent'; this.style.color='#0A192F';">
+        Fill Out This Short Form to Share What Kind of Support You'd Like
+      </a>
+    </div>
+
+    <!-- BOOK A 1:1 SESSION -->
+    <div>
+      <h2 class="font-headline-lg text-headline-lg text-primary mb-3">Book a 1:1 Session</h2>
+      <p class="font-body-lg text-body-lg text-on-surface-variant">Ready to dive deeper? Choose a time that works for
+        you.</p>
+    </div>
+
+  </section>
+
+
+  <!-- ══════════════════════════════════════════
+     SECTION: CLIENTS
+══════════════════════════════════════════ -->
+  <section id="clients" class="max-w-screen-2xl mx-auto px-gutter md:px-margin-page py-section-gap">
+
+    <!-- Intro paragraph -->
+    <p class="font-body-lg text-body-lg text-on-surface-variant max-w-3xl mb-16 leading-relaxed scroll-reveal">Lanecraft Lab operates
+      at the intersection of strategy, systems, and communications, supporting professionals, brands, and mission-driven
+      organizations as they navigate milestones and inflection points. Our work spans strategic positioning, executive
+      advisory, leadership development, and regulatory insight in sectors shaped by shifting geopolitical, compliance,
+      and policy dynamics. This page highlights select engagements that demonstrate how we help clients clarify their
+      value proposition, strengthen stakeholder alignment, and adapt effectively to complex environments.</p>
+
+    <!-- FEATURED ENGAGEMENTS -->
+    <div class="mb-16">
+      <h2 class="font-headline-xl text-headline-xl text-primary mb-10 uppercase scroll-reveal"
+        style="font-family:Georgia,serif; letter-spacing:0.04em;">Featured Engagements</h2>
+      <div class="grid grid-cols-3 gap-6 md:gap-10 items-center">
+        <div class="client-card flex items-center justify-center bg-white border border-outline-variant/30 p-6 scroll-reveal"
+          style="min-height:140px;" data-delay="0">
+          <img src="PG.png" alt="Performance Golf" style="max-height:80px; max-width:100%; object-fit:contain;" />
+        </div>
+        <div class="client-card flex items-center justify-center bg-white border border-outline-variant/30 p-6 scroll-reveal"
+          style="min-height:140px;" data-delay="120">
+          <img src="AuntFlow.webp" alt="Aunt Flow" style="max-height:110px; max-width:100%; object-fit:contain;" />
+        </div>
+        <div class="client-card flex items-center justify-center bg-white border border-outline-variant/30 p-6 scroll-reveal"
+          style="min-height:140px;" data-delay="240">
+          <img src="LeeStrasbergInstitute.webp" alt="Lee Strasberg Theatre &amp; Film Institute"
+            style="max-height:90px; max-width:100%; object-fit:contain;" />
+        </div>
+      </div>
+    </div>
+
+    <!-- ALL CLIENTS accordion -->
+    <div>
+      <h2 class="font-headline-xl text-headline-xl text-primary mb-8 uppercase scroll-reveal"
+        style="font-family:Georgia,serif; letter-spacing:0.04em;">All Clients</h2>
+      <div class="border-t border-outline-variant/60">
+
+        <!-- 1: A.R.T / New York -->
+        <div class="accordion-item border-b border-outline-variant/60">
+          <button onclick="toggleAccordion(this)" class="w-full flex justify-between items-center py-5 text-left"
+            aria-expanded="false">
+            <span class="font-label-sm text-label-sm uppercase tracking-widest text-on-surface font-bold"
+              style="font-size:16px; letter-spacing:0.08em;">A.R.T / New York Theatres (Lee Strasberg
+              Institute-Affiliated Production)</span>
+            <span
+              class="accordion-icon text-on-surface-variant text-2xl font-light leading-none select-none flex-shrink-0 ml-4">+</span>
+          </button>
+          <div class="accordion-body hidden pb-8">
+            <p class="font-label-sm text-label-sm text-outline uppercase tracking-widest mb-3">Client Profile</p>
+            <p class="font-body-md text-body-md text-on-surface-variant max-w-3xl mb-6 leading-relaxed">Developed assets
+              for the rollout of Apples for August, a coming-of-age stage production created by a Lee Strasberg
+              Institute-affiliated team. The play, Apples for August, was written by Anushka Kar and directed by Jeremy
+              Watson.</p>
+            <p class="font-label-sm text-label-sm text-outline uppercase tracking-widest mb-3">Reflective Spotlight on
+              the Play</p>
+            <div class="font-body-md text-body-md text-on-surface-variant max-w-3xl space-y-4 leading-relaxed">
+              <p>Apples for August speaks to the weight of release that flows from the relief of what it means to be
+                fully seen. Set in an apple orchard in upstate New York, the story follows a growing bond between
+                August, a high school senior, and Jude, an aspiring artist gearing up for college. Anushka Kar stars as
+                August, while Patrick Eckland steps into the role of Jude.</p>
+              <p>This coming-of-age play, which premiered at the Next Step Theatre Festival in New York City on May 30,
+                unfolded like a song of remembrance. For me, it stirred a pulse in the chest—the throb of life, a
+                recognition of being met with presence and held without judgment.</p>
+              <p>The dialogue between August and Jude feels organic, even effortless. Witty moments elicited peals of
+                laughter from the audience. Beneath the surface, though, the script dips into an oasis that rustles and
+                stirs with deeper threads—what does it mean to just be, without performance or polish? What does faith
+                mean to someone who has never believed in it? These musings, rooted in simplicity, strike a universal
+                chord insofar as a yearning for visibility.</p>
+              <p>Tactile moments—like Jude shrugging into a fresh shirt before a new scene—add texture and realism to
+                the staging. Seasonal shifts mirror emotional changes, setting a rhythm that ground the play in both
+                time and feeling.</p>
+              <p>And then, there's a twist I didn't see coming—Jude loses his eyesight, almost overnight. In that sudden
+                darkness, the earlier contrast between Jude's belief in something greater fades into August's skepticism
+                in the powers that be. Now, Jude feels unmoored, while August—still herself, still uncertain—becomes his
+                anchor. The move to tilt this paradigm on its axis feels like a masterstroke, a metaphor for the
+                fragility of human perception and for the deeper seeing that sometimes happens only when the surface is
+                peeled raw. It also marks August's steady rise into the power of her natural self.</p>
+              <p>And here is one of the most haunting lines when Jude tells August, "Every time I hear your voice, it's
+                painful. It grows increasingly tired." Jude hears the ache of love, of concern, of yearning in August's
+                voice. And yet, it's her voice that holds him, quivering yet steady, lost yet present, frustrated yet
+                alive with the ache of loving someone who knows her in his new reality. He can no longer see her, nor
+                pursue his art as before, but her voice carries an evolving truth. Against that backdrop, the narrative,
+                in its nuanced subtlety, offers a portrait of paradox—of grief and connection, loss and presence.</p>
+              <p>Apples for August invites us into a space where longing coexists with tinner light, where rootedness
+                becomes its own quiet power. The longing to be seen and heard is one many can relate to. And that's
+                exactly what this play gives you. Your vision and your voice.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2: Performance Golf -->
+        <div class="accordion-item border-b border-outline-variant/60">
+          <button onclick="toggleAccordion(this)" class="w-full flex justify-between items-center py-5 text-left"
+            aria-expanded="false">
+            <span class="font-label-sm text-label-sm uppercase tracking-widest text-on-surface font-bold"
+              style="font-size:16px; letter-spacing:0.08em;">Performance Golf</span>
+            <span
+              class="accordion-icon text-on-surface-variant text-2xl font-light leading-none select-none flex-shrink-0 ml-4">+</span>
+          </button>
+          <div class="accordion-body hidden pb-8">
+            <p class="font-label-sm text-label-sm text-outline uppercase tracking-widest mb-3">Client Profile</p>
+            <p class="font-body-md text-body-md text-on-surface-variant max-w-3xl mb-6 leading-relaxed">A
+              performance-driven golf training and equipment brand focused on helping everyday golfers improve their
+              game. The company, led by Brixton Albert, a former collegiate athlete and coach, is seeking to build
+              national visibility while strengthening its brand narrative and media presence.</p>
+            <p class="font-label-sm text-label-sm text-outline uppercase tracking-widest mb-3">Advisory</p>
+            <p class="font-body-md text-body-md text-on-surface-variant max-w-3xl mb-4 leading-relaxed">Brand
+              positioning, earned media strategy, and narrative development to boost visibility and authority within the
+              competitive sports and performance ecosystem. Current scope includes:</p>
+            <ul class="font-body-md text-body-md text-on-surface-variant max-w-3xl space-y-2 mb-4">
+              <li><strong>·</strong> Building a targeted earned media roadmap that positions Performance Golf as an
+                integrated performance ecosystem differentiated from generic training programs and influencer-driven
+                fitness brands.</li>
+              <li><strong>·</strong> Refining messaging across digital media touchpoints to strengthen consistency,
+                credibility, and conversion.</li>
+              <li><strong>·</strong> Media briefings + advisory on founder visibility and storytelling opportunities.
+              </li>
+            </ul>
+            <p class="font-label-sm text-label-sm text-outline uppercase tracking-widest mt-6 mb-4">Featured Videos</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-3xl">
+              <div style="position:relative; padding-bottom:56.25%; height:0; overflow:hidden; border-radius:4px;">
+                <iframe src="https://www.youtube.com/embed/1zTLn4pfSuo?start=359"
+                  style="position:absolute; top:0; left:0; width:100%; height:100%;"
+                  title="Performance Golf — Featured Video 1"
+                  frameborder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowfullscreen></iframe>
+              </div>
+              <div style="position:relative; padding-bottom:56.25%; height:0; overflow:hidden; border-radius:4px;">
+                <iframe src="https://www.youtube.com/embed/8tq6hAM_2sE?start=2"
+                  style="position:absolute; top:0; left:0; width:100%; height:100%;"
+                  title="Performance Golf — Featured Video 2"
+                  frameborder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowfullscreen></iframe>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3: Aunt Flow -->
+        <div class="accordion-item border-b border-outline-variant/60">
+          <button onclick="toggleAccordion(this)" class="w-full flex justify-between items-center py-5 text-left"
+            aria-expanded="false">
+            <span class="font-label-sm text-label-sm uppercase tracking-widest text-on-surface font-bold"
+              style="font-size:16px; letter-spacing:0.08em;">Aunt Flow</span>
+            <span
+              class="accordion-icon text-on-surface-variant text-2xl font-light leading-none select-none flex-shrink-0 ml-4">+</span>
+          </button>
+          <div class="accordion-body hidden pb-8">
+            <p class="font-label-sm text-label-sm text-outline uppercase tracking-widest mb-3">Client Profile</p>
+            <p class="font-body-md text-body-md text-on-surface-variant max-w-3xl mb-6 leading-relaxed">Founded by
+              Claire Coder in 2016, Aunt Flow has provided access to high-quality period products for free in over
+              70,000 restrooms across workplaces, schools, stadiums, airports, healthcare settings, and other public
+              venues. Workplaces and public venues Aunt Flow has stocked include Google, Netflix, the Houston Airport
+              System, the Tampa Bay Rays' Tropicana Field stadium, and the Chicago White Sox baseball team's home
+              stadium, Rate Field.</p>
+            <p class="font-label-sm text-label-sm text-outline uppercase tracking-widest mb-3">Advisory</p>
+            <p class="font-body-md text-body-md text-on-surface-variant max-w-3xl leading-relaxed">Lanecraft Lab
+              supports targeted visibility across key institutional and trade audiences, including facilities managers,
+              building and venue operators, procurement partners, and distributors, while positioning Aunt Flow within
+              the broader operational, cultural, and equity conversations driving period-care access toward the same
+              institutional standard as other restroom essentials.</p>
+            <p class="font-label-sm text-label-sm text-outline uppercase tracking-widest mt-6 mb-4">Featured Video</p>
+            <div style="max-width:680px;">
+              <div style="position:relative; padding-bottom:56.25%; height:0; overflow:hidden; border-radius:4px;">
+                <iframe src="https://www.youtube.com/embed/QIdAFc0GxeY"
+                  style="position:absolute; top:0; left:0; width:100%; height:100%;"
+                  title="Aunt Flow — Featured Video"
+                  frameborder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowfullscreen></iframe>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4: Energy Infrastructure Leader -->
+        <div class="accordion-item border-b border-outline-variant/60">
+          <button onclick="toggleAccordion(this)" class="w-full flex justify-between items-center py-5 text-left"
+            aria-expanded="false">
+            <span class="font-label-sm text-label-sm uppercase tracking-widest text-on-surface font-bold"
+              style="font-size:16px; letter-spacing:0.08em;">An Energy Infrastructure Leader (Confidential)</span>
+            <span
+              class="accordion-icon text-on-surface-variant text-2xl font-light leading-none select-none flex-shrink-0 ml-4">+</span>
+          </button>
+          <div class="accordion-body hidden pb-8">
+            <p class="font-label-sm text-label-sm text-outline uppercase tracking-widest mb-3">Client Profile</p>
+            <p class="font-body-md text-body-md text-on-surface-variant max-w-3xl mb-6 leading-relaxed">A global leader
+              in energy management and automation with a strong focus on digital transformation and decarbonization. The
+              client wanted to enhance the visibility and adoption of a new digital retrofit and emissions reduction
+              tool designed for commercial building owners navigating evolving sustainability regulations.</p>
+            <p class="font-label-sm text-label-sm text-outline uppercase tracking-widest mb-3">Advisory</p>
+            <p class="font-body-md text-body-md text-on-surface-variant max-w-3xl mb-4 leading-relaxed">Refining launch
+              communications collateral and designing a multi-phase campaign strategy around the product rollout. This
+              included:</p>
+            <ul class="font-body-md text-body-md text-on-surface-variant max-w-3xl space-y-2 mb-6">
+              <li><strong>·</strong> Evaluating and strengthening the core press release for clarity, accessibility, and
+                engagement.</li>
+              <li><strong>·</strong> Developing messaging frameworks for both Tier-1 and trade media, tailored to
+                audiences spanning financial, regulatory, and technical sectors.</li>
+              <li><strong>·</strong> Designing a phased campaign, from internal briefings and pre-launch embargoed
+                interviews to influencer collaboration and post-launch amplification.</li>
+              <li><strong>·</strong> Advising on webinar content, customer/user storytelling, and ongoing narrative
+                positioning for the client's sustainability leadership.</li>
+            </ul>
+            <p class="font-label-sm text-label-sm text-outline uppercase tracking-widest mb-3">Outcomes</p>
+            <ul class="font-body-md text-body-md text-on-surface-variant max-w-3xl space-y-2">
+              <li><strong>·</strong> Delivered a comprehensive communications playbook with over 20 tactical
+                recommendations spanning press, social, and partner channels.</li>
+              <li><strong>·</strong> Helped align internal and external messaging across marketing, PR, and technical
+                teams.</li>
+              <li><strong>·</strong> Established a consistent narrative linking digital innovation with measurable
+                energy and emissions outcomes.</li>
+              <li><strong>·</strong> Strengthened the client's media readiness and visibility among real estate, ESG,
+                and sustainability trade publications, leading to expanded coverage opportunities and long-term
+                stakeholder engagement.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- 5: Narrative Repositioning -->
+        <div class="accordion-item border-b border-outline-variant/60">
+          <button onclick="toggleAccordion(this)" class="w-full flex justify-between items-center py-5 text-left"
+            aria-expanded="false">
+            <span class="font-label-sm text-label-sm uppercase tracking-widest text-on-surface font-bold"
+              style="font-size:16px; letter-spacing:0.08em;">Narrative Repositioning + Sectoral Re-Entry</span>
+            <span
+              class="accordion-icon text-on-surface-variant text-2xl font-light leading-none select-none flex-shrink-0 ml-4">+</span>
+          </button>
+          <div class="accordion-body hidden pb-8">
+            <p class="font-label-sm text-label-sm text-outline uppercase tracking-widest mb-3">Client Profile</p>
+            <p class="font-body-md text-body-md text-on-surface-variant max-w-3xl mb-6 leading-relaxed">A senior media
+              executive recalibrating professional direction following a period of career deceleration.</p>
+            <p class="font-label-sm text-label-sm text-outline uppercase tracking-widest mb-3">Advisory</p>
+            <ul class="font-body-md text-body-md text-on-surface-variant max-w-3xl space-y-2 mb-6">
+              <li><strong>·</strong> Repositioned recent industry shifts and gaps as part of an innovation-led
+                professional trajectory.</li>
+              <li><strong>·</strong> Refined executive narrative to emphasize cross-functional leadership and content
+                strategy expertise.</li>
+              <li><strong>·</strong> Developed a targeted 6–12 month re-entry roadmap aligned with evolving media
+                ecosystem priorities.</li>
+            </ul>
+            <p class="font-label-sm text-label-sm text-outline uppercase tracking-widest mb-3">Outcome</p>
+            <p class="font-body-md text-body-md text-on-surface-variant max-w-3xl leading-relaxed">Delivered a
+              repositioning framework and sectoral engagement strategy to support reintegration into high-impact media
+              and content roles.</p>
+          </div>
+        </div>
+
+        <!-- 6: Digital Asset Deployment -->
+        <div class="accordion-item border-b border-outline-variant/60">
+          <button onclick="toggleAccordion(this)" class="w-full flex justify-between items-center py-5 text-left"
+            aria-expanded="false">
+            <span class="font-label-sm text-label-sm uppercase tracking-widest text-on-surface font-bold"
+              style="font-size:16px; letter-spacing:0.08em;">Digital Asset Deployment and Content Platform
+              Optimization</span>
+            <span
+              class="accordion-icon text-on-surface-variant text-2xl font-light leading-none select-none flex-shrink-0 ml-4">+</span>
+          </button>
+          <div class="accordion-body hidden pb-8">
+            <p class="font-label-sm text-label-sm text-outline uppercase tracking-widest mb-3">Client Profile</p>
+            <p class="font-body-md text-body-md text-on-surface-variant max-w-3xl mb-6 leading-relaxed">A former NYPD
+              lieutenant pursuing multiple book projects sought support to establish a professional-grade publishing and
+              distribution platform.</p>
+            <p class="font-label-sm text-label-sm text-outline uppercase tracking-widest mb-3">Advisory</p>
+            <ul class="font-body-md text-body-md text-on-surface-variant max-w-3xl space-y-2 mb-6">
+              <li><strong>·</strong> Outlined optimal self-publishing pathways with an emphasis on rights retention,
+                discoverability, and scalability.</li>
+              <li><strong>·</strong> Delivered step-by-step KDP publishing guidance with supporting reference materials
+                (walkthrough + checklist).</li>
+              <li><strong>·</strong> Evaluated back-end optimization strategies including metadata, author branding, and
+                category/tag structure.</li>
+            </ul>
+            <p class="font-label-sm text-label-sm text-outline uppercase tracking-widest mb-3">Outcome</p>
+            <p class="font-body-md text-body-md text-on-surface-variant max-w-3xl leading-relaxed">Equipped the client
+              with a streamlined publication execution plan and platform readiness tools to enable timely market entry
+              via Amazon KDP.</p>
+          </div>
+        </div>
+
+        <!-- 7: Strategic Positioning for a Venture Launch -->
+        <div class="accordion-item border-b border-outline-variant/60">
+          <button onclick="toggleAccordion(this)" class="w-full flex justify-between items-center py-5 text-left"
+            aria-expanded="false">
+            <span class="font-label-sm text-label-sm uppercase tracking-widest text-on-surface font-bold"
+              style="font-size:16px; letter-spacing:0.08em;">Strategic Positioning for a Venture Launch</span>
+            <span
+              class="accordion-icon text-on-surface-variant text-2xl font-light leading-none select-none flex-shrink-0 ml-4">+</span>
+          </button>
+          <div class="accordion-body hidden pb-8">
+            <p class="font-label-sm text-label-sm text-outline uppercase tracking-widest mb-3">Client Profile</p>
+            <p class="font-body-md text-body-md text-on-surface-variant max-w-3xl mb-6 leading-relaxed">A finance
+              professional with subject-matter expertise in global derivatives, preparing to launch a specialized
+              content strategy and advisory business.</p>
+            <p class="font-label-sm text-label-sm text-outline uppercase tracking-widest mb-3">Advisory</p>
+            <ul class="font-body-md text-body-md text-on-surface-variant max-w-3xl space-y-2 mb-6">
+              <li><strong>·</strong> Assessed market positioning strategy across both business lines with an emphasis on
+                monetization and brand coherence.</li>
+              <li><strong>·</strong> Conducted narrative disambiguation to align long-term goals with short-term service
+                offerings.</li>
+              <li><strong>·</strong> Provided concrete service design recommendations including beta offer structuring,
+                qualification filters, intake sequencing, and conversion pipeline strategies.</li>
+            </ul>
+            <p class="font-label-sm text-label-sm text-outline uppercase tracking-widest mb-3">Outcome</p>
+            <p class="font-body-md text-body-md text-on-surface-variant max-w-3xl leading-relaxed">Delivered a
+              calibrated go-to-market approach with tactical inputs to accelerate initial offer deployment, enhance
+              founder focus, and streamline the value proposition across content and consulting arms.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </section>
+  <!-- ── Footer ── -->
+  <footer class="bg-[#0A192F] text-slate-300 font-sans text-sm border-t border-slate-700">
+    <div class="max-w-screen-2xl mx-auto px-6 md:px-24 py-12 flex flex-col gap-8">
+
+      <!-- Social links -->
+      <div class="flex flex-wrap items-center gap-x-4 gap-y-3">
+        <a href="https://www.linkedin.com/in/nishamarnath/" target="_blank" rel="noopener noreferrer"
+          class="text-slate-300 hover:text-white transition-colors underline underline-offset-4">linkedin</a>
+        <span class="text-slate-600 hidden sm:inline">|</span>
+        <a href="https://www.facebook.com/nishamarnath/" target="_blank" rel="noopener noreferrer"
+          class="text-slate-300 hover:text-white transition-colors underline underline-offset-4">facebook</a>
+        <span class="text-slate-600 hidden sm:inline">|</span>
+        <a href="https://x.com/nishamarnath" target="_blank" rel="noopener noreferrer"
+          class="text-slate-300 hover:text-white transition-colors underline underline-offset-4">twitter</a>
+        <span class="text-slate-600 hidden sm:inline">|</span>
+        <a href="https://www.instagram.com/explore/search/keyword/?q=%23nishamarnath" target="_blank" rel="noopener noreferrer"
+          class="text-slate-300 hover:text-white transition-colors underline underline-offset-4">instagram</a>
+        <span class="text-slate-600 hidden sm:inline">|</span>
+        <a href="https://www.tiktok.com/@nishamarnath" target="_blank" rel="noopener noreferrer"
+          class="text-slate-300 hover:text-white transition-colors underline underline-offset-4">tiktok</a>
+        <span class="text-slate-600 hidden sm:inline">|</span>
+        <a href="https://open.spotify.com/show/16kXiseIhBR5zbxJVxL2cb?si=f1a233e7f9e0451e&nd=1&dlsi=b42a871659674082" target="_blank" rel="noopener noreferrer"
+          class="text-slate-300 hover:text-white transition-colors underline underline-offset-4">spotify</a>
+      </div>
+
+      <!-- Terms -->
+      <div>
+        <a href="#" class="text-slate-300 hover:text-white transition-colors normal-case tracking-normal">Terms and Conditions</a>
+      </div>
+
+      <!-- Copyright -->
+      <div class="text-center text-slate-400 normal-case tracking-normal">
+        © 2025. Nish Amarnath. All rights reserved.
+      </div>
+
+    </div>
+  </footer>
+
+  <script>
+      (function () {
+        var btn = document.getElementById('hamburger-btn');
+        var menu = document.getElementById('mobile-menu');
+
+        function openMobileMenu() {
+          menu.classList.add('open');
+          btn.classList.add('active');
+          btn.setAttribute('aria-expanded', 'true');
+          document.addEventListener('click', outsideClickHandler, true);
+        }
+
+        function closeMobileMenuFn() {
+          menu.classList.remove('open');
+          btn.classList.remove('active');
+          btn.setAttribute('aria-expanded', 'false');
+          document.removeEventListener('click', outsideClickHandler, true);
+        }
+
+        window.closeMobileMenu = closeMobileMenuFn;
+
+        function outsideClickHandler(e) {
+          if (!menu.contains(e.target) && !btn.contains(e.target)) {
+            closeMobileMenuFn();
+          }
+        }
+
+        btn.addEventListener('click', function (e) {
+          e.stopPropagation();
+          if (menu.classList.contains('open')) {
+            closeMobileMenuFn();
+          } else {
+            openMobileMenu();
+          }
+        });
+
+        menu.querySelectorAll('a').forEach(function (link) {
+          link.addEventListener('click', closeMobileMenuFn);
+        });
+
+        window.addEventListener('resize', function () {
+          if (window.innerWidth >= 768) {
+            closeMobileMenuFn();
+          }
+        });
+      })();
+
+    // Always scroll to top on page load/reload
+    if ('scrollRestoration' in history) { history.scrollRestoration = 'manual'; }
+
+    // Unified scroll-reveal animation (testimonials + general sections)
+    (function () {
+      var els = document.querySelectorAll('.testimonial-card, .scroll-reveal');
+      if (!('IntersectionObserver' in window)) {
+        els.forEach(function (el) { el.classList.add('in-view'); });
+        return;
+      }
+      var obs = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            var el = entry.target;
+            var delay = parseInt(el.dataset.delay) || 0;
+            setTimeout(function () { el.classList.add('in-view'); }, delay);
+            obs.unobserve(el);
+          }
+        });
+      }, { threshold: 0.10 });
+      els.forEach(function (el) { obs.observe(el); });
+    })();
+
+    // Consult button — one-time pulse when it first enters view
+    (function () {
+      var btn = document.querySelector('.consult-btn');
+      if (!btn || !('IntersectionObserver' in window)) return;
+      var obs = new IntersectionObserver(function (entries) {
+        if (entries[0].isIntersecting) {
+          btn.classList.add('consult-btn-pulse');
+          obs.unobserve(btn);
+        }
+      }, { threshold: 0.6 });
+      obs.observe(btn);
+    })();
+
+    // Testimonial spotlight — only the card closest to viewport centre gets t-active
+    (function () {
+      var cards = Array.from(document.querySelectorAll('.testimonial-card'));
+      if (!cards.length) return;
+      function update() {
+        var mid = window.innerHeight / 2;
+        var closest = null, minDist = Infinity;
+        cards.forEach(function (c) {
+          if (!c.classList.contains('in-view')) return;
+          var r = c.getBoundingClientRect();
+          var dist = Math.abs((r.top + r.height / 2) - mid);
+          if (dist < minDist) { minDist = dist; closest = c; }
+        });
+        cards.forEach(function (c) { c.classList.toggle('t-active', c === closest); });
+      }
+      window.addEventListener('scroll', update, { passive: true });
+      window.addEventListener('resize', update, { passive: true });
+      setTimeout(update, 800);
+    })();
+
+    // Accordion toggle for services section
+    function toggleAccordion(btn) {
+      var body = btn.nextElementSibling;
+      var icon = btn.querySelector('.accordion-icon');
+      var isOpen = !body.classList.contains('hidden');
+      // close all
+      document.querySelectorAll('.accordion-body').forEach(function (b) { b.classList.add('hidden'); });
+      document.querySelectorAll('.accordion-icon').forEach(function (i) { i.textContent = '+'; });
+      document.querySelectorAll('.accordion-item button').forEach(function (b) { b.setAttribute('aria-expanded', 'false'); });
+      // open clicked if it was closed
+      if (!isOpen) {
+        body.classList.remove('hidden');
+        icon.textContent = '−';
+        btn.setAttribute('aria-expanded', 'true');
+      }
+    }
+  </script>
+</body>
+
+</html>
