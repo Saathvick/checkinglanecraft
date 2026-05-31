@@ -33,10 +33,8 @@
       max-width: 1280px; margin: 0 auto; padding: 18px 48px;
       display: flex; align-items: center; justify-content: space-between;
     }
-    .logo {
-      font-family: 'Newsreader', serif; font-size: 19px; font-weight: 500;
-      color: var(--white); letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none;
-    }
+    .logo { text-decoration: none; display: flex; align-items: center; }
+    .logo-img { height: 48px; width: auto; display: block; }
     .nav-links { display: flex; align-items: center; gap: 36px; list-style: none; }
     .nav-links a {
       color: rgba(255,255,255,0.72); text-decoration: none; font-size: 11px;
@@ -158,15 +156,18 @@
     }
     .press-logo:hover { opacity: 1; }
     .press-logo img {
-      height: 36px; width: auto; max-width: 160px;
+      height: 44px; width: auto; max-width: 200px;
       object-fit: contain; filter: grayscale(1);
       transition: all 0.3s;
     }
     .press-logo:hover img { filter: grayscale(0); }
-    /* Per-logo size fixes for logos that render too small */
-    .press-logo img[alt="CNBC"] { height: 52px; }
-    .press-logo img[alt="TheGIST"] { height: 52px; max-width: 120px; }
-    .press-logo img[alt="The Wall Street Journal"] { height: 42px; max-width: 280px; }
+    /* Per-logo size fixes */
+    .press-logo img[alt="The Wall Street Journal"] { height: 56px; max-width: 320px; }
+    .press-logo img[alt="Forbes"] { height: 38px; }
+    .press-logo img[alt="CNBC"] { height: 44px; }
+    .press-logo img[alt="TheGIST"] { height: 52px; max-width: 160px; }
+    .press-logo img[alt="BW BusinessWorld"] { height: 40px; max-width: 200px; }
+    .press-logo img[alt="Golf Digest"] { height: 40px; }
 
     /* SERVICES */
     #services { background: var(--white); }
@@ -202,7 +203,7 @@
     .svc-num { font-size: 11px; font-weight: 600; letter-spacing: 0.2em; color: var(--gold); margin-bottom: 10px; }
     .svc-title { font-family: 'Newsreader', serif; font-size: 22px; color: var(--white); font-weight: 600; line-height: 1.25; margin-bottom: 12px; }
     .svc-body { font-size: 14px; color: rgba(255,255,255,0.76); line-height: 1.72; max-height: 0; overflow: hidden; transition: max-height 0.5s ease; }
-    .svc-card:hover .svc-body { max-height: 220px; }
+    .svc-card:hover .svc-body { max-height: 320px; }
 
     /* CLIENTS */
     #clients { background: var(--off-white); }
@@ -217,7 +218,8 @@
     .client-tile { background: var(--white); overflow: hidden; transition: transform 0.3s, box-shadow 0.3s; }
     .client-tile:hover { transform: translateY(-5px); box-shadow: 0 24px 48px rgba(10,25,47,0.11); }
     .tile-head { background: var(--navy); padding: 28px 32px; min-height: 96px; display: flex; align-items: center; }
-    .tile-head img { max-height: 44px; max-width: 160px; object-fit: contain; filter: brightness(0) invert(1); }
+    .tile-head img { max-height: 64px; max-width: 220px; object-fit: contain; }
+    .tile-head img[alt="Aunt Flow"] { max-height: 90px; max-width: 90px; }
     .tile-logo-text { font-family: 'Newsreader', serif; font-size: 22px; color: var(--white); font-weight: 500; }
     .tile-body { padding: 28px; }
     .tile-body p { font-size: 14px; line-height: 1.72; color: #4B5563; margin-bottom: 20px; }
@@ -397,7 +399,7 @@
 <!-- NAV -->
 <nav id="main-nav">
   <div class="nav-inner">
-    <a href="#hero" class="logo">Lanecraft Lab</a>
+    <a href="#hero" class="logo"><img src="lanecraftlogo.png" alt="Lanecraft Lab" class="logo-img" /></a>
     <ul class="nav-links">
       <li><a href="#services">Services</a></li>
       <li><a href="#clients">Clients</a></li>
@@ -460,6 +462,8 @@
       <span class="press-logo"><img src="logos/thestreet.webp" alt="The Street" /></span>
       <span class="press-logo"><img src="logos/morningbrew.svg" alt="Morning Brew" /></span>
       <span class="press-logo"><img src="logos/thegist.png" alt="TheGIST" /></span>
+      <span class="press-logo"><img src="logos/businessworld.webp" alt="BW BusinessWorld" /></span>
+      <span class="press-logo"><img src="logos/golfdigest.webp" alt="Golf Digest" /></span>
       <!-- Duplicate for seamless loop -->
       <span class="press-logo"><img src="logos/wsj.webp" alt="The Wall Street Journal" /></span>
       <span class="press-logo"><img src="logos/forbes.svg" alt="Forbes" /></span>
@@ -467,6 +471,8 @@
       <span class="press-logo"><img src="logos/thestreet.webp" alt="The Street" /></span>
       <span class="press-logo"><img src="logos/morningbrew.svg" alt="Morning Brew" /></span>
       <span class="press-logo"><img src="logos/thegist.png" alt="TheGIST" /></span>
+      <span class="press-logo"><img src="logos/businessworld.webp" alt="BW BusinessWorld" /></span>
+      <span class="press-logo"><img src="logos/golfdigest.webp" alt="Golf Digest" /></span>
     </div>
   </div>
 </section>
@@ -481,7 +487,7 @@
       <div>
         <p class="section-label">What We Do</p>
         <p class="big-quote">We launch the argument before we pitch the story.</p>
-        <p class="body-text">Visibility is not a press release, a pitch list, or a louder version of the same message. It comes from sharper positioning, stronger proof, and a communications system that helps the right people understand why your company matters.</p>
+        <p class="body-text">Visibility is not a press release, a pitch list, or a louder version of the same message. It comes from sharper positioning, stronger proof, and a communications system that helps the right people understand why a company and its executives matter now.</p>
         <p class="body-text">Lanecraft Lab works with companies navigating launches, growth moments, market repositioning, public visibility, stakeholder complexity, and leadership transitions.</p>
       </div>
     </div>
@@ -512,7 +518,7 @@
       <div class="svc-content">
         <p class="svc-num">03</p>
         <h3 class="svc-title">Media &amp; Public Voice Strategy</h3>
-        <p class="svc-body">Op-eds and bylined articles in Tier-1, trade, and niche media. Award submissions. Speaker and panel applications. Social and digital visibility. Media interview briefings. Podcast and speaker appearance briefs.</p>
+        <p class="svc-body">We provide platforms for you to share your public voice. This includes: Op-eds and bylined articles in Tier-1, trade, and niche media. Award submissions. Speaker and panel applications. Social media and digital media visibility. Media interview briefings. Briefs for podcast, guest, and speaker appearances.</p>
       </div>
     </div>
     <div class="svc-card reveal">
@@ -521,7 +527,7 @@
       <div class="svc-content">
         <p class="svc-num">04</p>
         <h3 class="svc-title">Processes &amp; Systems Optimization</h3>
-        <p class="svc-body">Diagnostic and advisory support to strengthen internal systems, identify revenue leakages, and reduce inefficiencies. Process mapping, performance benchmarking, KPI frameworks, and operational workflow audits.</p>
+        <p class="svc-body">Diagnostic and advisory support to strengthen your internal systems, identify revenue leakages, and reduce inefficiencies. This includes process mapping and redesign, performance benchmarking and KPI alignment, workflow optimization and documentation, operational risk controls, cross-functional coordination and decision-rights clarification.</p>
       </div>
     </div>
     <div class="svc-card reveal">
@@ -530,7 +536,7 @@
       <div class="svc-content">
         <p class="svc-num">05</p>
         <h3 class="svc-title">Corporate Governance</h3>
-        <p class="svc-body">Advisory support for building resilient governance frameworks, including CEO succession planning, best practices for board appointments, executive search, operational risk identification, and mitigation strategies.</p>
+        <p class="svc-body">Advisory support for building resilient governance frameworks, including CEO succession planning, best practices for board appointments, executive search, operational risk identification, and mitigation strategies. Tailored to organizations navigating growth, restructuring, or leadership transitions.</p>
       </div>
     </div>
     <div class="svc-card reveal">
@@ -539,7 +545,7 @@
       <div class="svc-content">
         <p class="svc-num">06</p>
         <h3 class="svc-title">Sustainability &amp; Energy Efficiency</h3>
-        <p class="svc-body">Energy efficiency assessments, ESG-aligned operational frameworks, carbon footprint reduction strategies, resource optimization, and alignment with regulatory, lender, and investor-driven sustainability goals.</p>
+        <p class="svc-body">Advisory on embedding sustainability into operational strategy. Includes: Energy efficiency assessments and vendor audits. ESG-aligned operational frameworks. Carbon footprint reduction strategies. Resource optimization and reporting metrics. Strategic alignment with regulatory, lender, and investor-driven sustainability goals.</p>
       </div>
     </div>
   </div>
@@ -556,13 +562,15 @@
     <!-- Performance Golf -->
     <div class="client-tile reveal">
       <div class="tile-head">
-        <img src="assets/logo-pg.png" alt="Performance Golf" />
+        <img src="PG logo - Orange.png" alt="Performance Golf" />
       </div>
       <div class="tile-body">
         <p>Founder visibility, product positioning, and earned media strategy for a fast-growing golf training and equipment company.</p>
+        <p><strong>How Brixton Albert built a $125M+ company from scratch with zero outside funding:</strong></p>
         <div class="video-wrap">
           <iframe src="https://www.youtube.com/embed/1zTLn4pfSuo?start=462" title="How Brixton Albert built a $125M+ company" allowfullscreen loading="lazy"></iframe>
         </div>
+        <p><strong>A day in the life of the CEO of a $100M+ company:</strong></p>
         <div class="video-wrap">
           <iframe src="https://www.youtube.com/embed/8tq6hAM_2sE?start=6" title="A day in the life of the CEO" allowfullscreen loading="lazy"></iframe>
         </div>
@@ -572,21 +580,23 @@
     <!-- Aunt Flow -->
     <div class="client-tile reveal">
       <div class="tile-head">
-        <span class="tile-logo-text">Aunt Flow</span>
+        <img src="AuntFlow_OfficialLogo_Coral.png" alt="Aunt Flow" />
       </div>
       <div class="tile-body">
         <p>Public-sector, facilities, healthcare, retail, workplace, and stadium-facing communications for a menstrual product access company changing restroom standards.</p>
+        <p><strong>North Miami Vice Mayor Timothe Brings Free Menstrual Products to North Miami Through a partnership with Aunt Flow:</strong></p>
         <div class="video-wrap">
           <iframe src="https://www.youtube.com/embed/DMNi4K4zXEU" title="North Miami Vice Mayor Timothe Brings Free Menstrual Products to North Miami Through a partnership with Aunt Flow" allowfullscreen loading="lazy"></iframe>
         </div>
+        <p><strong>A period party held at Tropicana Field during Reopening Day on April 10, 2026 as the Tampa Bay Rays return to their home stadium:</strong></p>
         <div class="video-wrap">
-          <iframe src="https://drive.google.com/file/d/1tSpqLFDZ0EXHh0us9rzh2xIKDPNGnd8p/preview" title="Aunt Flow Period Party Recap — Tropicana Field, April 10 2026" allowfullscreen loading="lazy"></iframe>
+          <iframe src="https://drive.google.com/file/d/1Gvs5QbE8O7XGPTMhshLNiRDoRHosA169/preview" title="Aunt Flow Period Party Recap — Tropicana Field, April 10 2026" allowfullscreen loading="lazy"></iframe>
         </div>
       </div>
     </div>
 
     <!-- Lee Strasberg -->
-    <div class="client-tile reveal">
+    <div class="client-tile reveal" id="lee-strasberg-spotlight">
       <div class="tile-head">
         <img src="assets/logo-lee-strasberg.png" alt="Lee Strasberg Theatre and Film Institute" />
       </div>
@@ -618,13 +628,13 @@
         </div>
         <div class="cr-content">
           <h4>Client Profile</h4>
-          <p>A performance-driven golf training and equipment brand focused on helping everyday golfers improve their game. The company, led by Brixton Albert, a former collegiate athlete and coach, is seeking to build national visibility while strengthening its brand narrative and media presence.</p>
+          <p>A performance-driven golf training and equipment brand focused on helping everyday golfers improve their game The company, led by Brixton Albert, a former collegiate athlete and coach, is seeking to build national visibility while strengthening its brand narrative and media presence.</p>
           <h4>Advisory</h4>
           <p>Brand positioning, earned media strategy, and narrative development to boost visibility and authority within the competitive sports and performance ecosystem. Current scope includes:</p>
           <ul>
-            <li>Building a targeted earned media roadmap that positions Performance Golf as an integrated performance ecosystem differentiated from generic training programs and influencer-driven fitness brands</li>
-            <li>Refining messaging across digital media touchpoints to strengthen consistency, credibility, and conversion</li>
-            <li>Media briefings + advisory on founder visibility and storytelling opportunities</li>
+            <li>Building a targeted earned media roadmap that positions Performance Golf as an integrated performance ecosystem differentiated from generic training programs and influencer-driven fitness brands.</li>
+            <li>Refining messaging across digital media touchpoints to strengthen consistency, credibility, and conversion.</li>
+            <li>Media briefings + advisory on founder visibility and storytelling opportunities.</li>
           </ul>
         </div>
       </div>
@@ -650,8 +660,8 @@
           <p class="cr-sector">Arts &amp; Culture (Lee Strasberg Institute-Affiliated)</p>
         </div>
         <div class="cr-content">
-          <h4>Engagement</h4>
-          <p>Developed assets for the rollout of <em>Apples for August</em>, a coming-of-age stage production created by a Lee Strasberg Institute-affiliated team. The play was written by Anushka Kar and directed by Jeremy Watson.</p>
+          <p>Developed assets for the rollout of <em>Apples for August</em>, a coming-of-age stage production created by a Lee Strasberg Institute-affiliated team. The play,, <em>Apples for August</em>, was written by Anushka Kar and directed by Jeremy Watson.</p>
+          <p>View our reflective spotlight of the <em>Apples for August</em> play <a href="#lee-strasberg-spotlight">here</a>.</p>
         </div>
       </div>
 
@@ -667,17 +677,17 @@
           <h4>Advisory</h4>
           <p>Refining launch communications collateral and designing a multi-phase campaign strategy around the product rollout. This included:</p>
           <ul>
-            <li>Evaluating and strengthening the core press release for clarity, accessibility, and engagement</li>
-            <li>Developing messaging frameworks for both Tier-1 and trade media, tailored to audiences spanning financial, regulatory, and technical sectors</li>
-            <li>Designing a phased campaign, from internal briefings and pre-launch embargoed interviews to influencer collaboration and post-launch amplification</li>
-            <li>Advising on webinar content, customer/user storytelling, and ongoing narrative positioning for the client's sustainability leadership</li>
+            <li>Evaluating and strengthening the core press release for clarity, accessibility, and engagement.</li>
+            <li>Developing messaging frameworks for both Tier-1 and trade media, tailored to audiences spanning financial, regulatory, and technical sectors.</li>
+            <li>Designing a phased campaign, from internal briefings and pre-launch embargoed interviews to influencer collaboration and post-launch amplification.</li>
+            <li>Advising on webinar content, customer/user storytelling, and ongoing narrative positioning for the client's sustainability leadership.</li>
           </ul>
           <h4>Outcomes</h4>
           <ul>
-            <li>Delivered a comprehensive communications playbook with over 20 tactical recommendations spanning press, social, and partner channels</li>
-            <li>Helped align internal and external messaging across marketing, PR, and technical teams</li>
-            <li>Established a consistent narrative linking digital innovation with measurable energy and emissions outcomes</li>
-            <li>Strengthened the client's media readiness and visibility among real estate, ESG, and sustainability trade publications, leading to expanded coverage opportunities and long-term stakeholder engagement</li>
+            <li>Delivered a comprehensive communications playbook with over 20 tactical recommendations spanning press, social, and partner channels.</li>
+            <li>Helped align internal and external messaging across marketing, PR, and technical teams.</li>
+            <li>Established a consistent narrative linking digital innovation with measurable energy and emissions outcomes.</li>
+            <li>Strengthened the client's media readiness and visibility among real estate, ESG, and sustainability trade publications, leading to expanded coverage opportunities and long-term stakeholder engagement.</li>
           </ul>
         </div>
       </div>
@@ -697,14 +707,15 @@
             <li>Refined executive narrative to emphasize cross-functional leadership and content strategy expertise</li>
             <li>Developed a targeted 6–12 month re-entry roadmap aligned with evolving media ecosystem priorities</li>
           </ul>
-          <span class="outcome">Outcome: Delivered repositioning framework and sectoral engagement strategy to support reintegration into high-impact media and content roles.</span>
+          <h4>Outcome</h4>
+          <p>Delivered repositioning framework and sectoral engagement strategy to support reintegration into high-impact media and content roles.</p>
         </div>
       </div>
 
       <div class="client-row reveal">
         <div>
           <p class="cr-num">06</p>
-          <p class="cr-name">Digital Asset Deployment &amp; Content Platform Optimization</p>
+          <p class="cr-name">Digital Asset Deployment and Content Platform Optimization</p>
           <p class="cr-sector">Publishing &amp; Content Platforms</p>
         </div>
         <div class="cr-content">
@@ -716,7 +727,8 @@
             <li>Delivered step-by-step KDP publishing guidance with supporting reference materials (walkthrough + checklist)</li>
             <li>Evaluated back-end optimization strategies including metadata, author branding, and category/tag structure</li>
           </ul>
-          <span class="outcome">Outcome: Equipped the client with a streamlined publication execution plan and platform readiness tools to enable timely market entry via Amazon KDP.</span>
+          <h4>Outcome</h4>
+          <p>Equipped the client with a streamlined publication execution plan and platform readiness tools to enable timely market entry via Amazon KDP.</p>
         </div>
       </div>
 
@@ -735,7 +747,8 @@
             <li>Conducted narrative disambiguation to align long-term goals with short-term service offerings</li>
             <li>Provided concrete service design recommendations including beta offer structuring, qualification filters, intake sequencing, and conversion pipeline strategies</li>
           </ul>
-          <span class="outcome">Outcome: Delivered a calibrated go-to-market approach with tactical inputs to accelerate initial offer deployment, enhance founder focus, and streamline the value proposition across content and consulting arms.</span>
+          <h4>Outcome</h4>
+          <p>Delivered a calibrated go-to-market approach with tactical inputs to accelerate initial offer deployment, enhance founder focus, and streamline the value proposition across content and consulting arms.</p>
         </div>
       </div>
 
@@ -805,7 +818,7 @@
         <p class="team-bio">Brentan brings over a decade of experience in sports marketing, media relations, earned media strategy, and editorial support, with a background spanning organizations and brands such as the International Tennis Hall of Fame and the Miami Heat. His career has been driven by a deep engagement at the intersection of marketing and communications across leagues that include the NBA, NFL, and MLS. His addition strengthens Lanecraft Lab's bench across sports and sports-adjacent verticals, while expanding our capacity to support founder-facing storytelling, customized media outreach, and fast-moving newsroom-facing work.</p>
       </div>
       <div class="team-card reveal">
-        <div class="photo-placeholder"><span>V</span></div>
+        <img src="assets/Pothen, James.jpeg" alt="Vasant Laplam" class="team-photo" />
         <p class="team-name">Vasant Laplam</p>
         <p class="team-role-label">Content &amp; Communications Strategist</p>
         <p class="team-bio">Media engagement for our clients involves thinking like a journalist and understanding how newsroom decisions are made. Vasant, whose career combines creativity and analysis, brings a sharp editorial lens to our media-facing work. At Lanecraft Lab, Vasant takes the lead on editorial and content development initiatives, including pitch framing, award applications, speaking submissions, client features, and social media management. A former software engineer, he helped launch the award-winning NYT Cooking app. As a journalist, his focus on thoughtful source development opened doors to stories in The New York Times, Fast Company, trade publications, and local news outlets. He also led a team of interns at the Dow Jones News Fund. He holds degrees in Civil Engineering from Cornell University and Multimedia Journalism from New York University.</p>
@@ -845,9 +858,9 @@
   <div class="work-inner">
     <p class="section-label" style="text-align:center">Careers</p>
     <h2 class="section-title dark" style="text-align:center;margin-top:8px;margin-bottom:32px">Work With Us</h2>
-    <p>We're a lean, fast-moving environment and we believe in creativity, lateral thinking, critical thinking, efficiency and results. We're a fun team to work with, and you get exposure to high-ranking executives, media professionals, and a wide variety of industries.</p>
-    <p>We're always open to hearing from strong public relations professionals, storytellers, content creators, and former journalists. So, if you'd like to explore working with us, feel free to reach out.</p>
-    <a href="mailto:info@lanecraftlab.com" class="work-link">Get in Touch</a>
+    <p>We're a lean, fast-moving environment and we believe in creativity, lateral thinking, critical thinking, efficiency and results. We're a fun team to work with, and you get exposure to high-ranking executives, influencers, seasoned editors and contributors, and more! As we continue to grow, we're also deepening select collaborations across our broader external network to support a growing mix of projects and engagements.</p>
+    <p>We're always open to hearing from strong public relations professionals, storytellers, content creators, and former journalists. So, if you'd like to explore working with us, feel free to reach out at comms@lanecraftlab.com.</p>
+    <a href="mailto:comms@lanecraftlab.com" class="work-link">Get in Touch</a>
   </div>
 </section>
 
@@ -859,7 +872,6 @@
       <h2 class="section-title light" style="margin-top:8px">Bring Us the Brief.</h2>
       <p>Do you feel you need a visibility push or help with strategic communications and market-facing messaging support? Bring us the brief, the bottleneck, and the messy middle. We're here for all that. We'll carry you through to the end.</p>
       <p>We review and respond to every inquiry. We assess alignment and fit. And we're always happy to hop on our call and provide recommendations.</p>
-      <p>Please use this contact form as a reference template.</p>
     </div>
     <form class="contact-form" id="contact-form" onsubmit="handleSubmit(event)">
       <p class="form-header">Please Complete the Form Below</p>
