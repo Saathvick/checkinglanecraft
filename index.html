@@ -382,8 +382,12 @@
       .press-card { grid-template-columns: 1fr; gap: 28px; }
       .services-intro-grid, .contact-inner { grid-template-columns: 1fr; }
       .services-grid, .featured-grid, .t-grid, .team-grid, .advisory-grid { grid-template-columns: 1fr; }
-      .svc-card { height: 320px; }
-      .svc-body { max-height: 200px; }
+      .services-grid { gap: 16px; }
+      .svc-card { height: auto; border-radius: 12px; }
+      .svc-bg { border-radius: 12px; }
+      .svc-overlay { border-radius: 12px; }
+      .svc-content { position: relative; padding: 160px 24px 28px; }
+      .svc-body { max-height: none; overflow: visible; }
       .client-row { grid-template-columns: 1fr; gap: 16px; }
       .form-row { grid-template-columns: 1fr; }
       .footer-inner { flex-direction: column; gap: 20px; text-align: center; }
