@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Lanecraft Lab | Strategic Communications & PR</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400;1,6..72,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400;1,6..72,500&family=Inter:wght@300;400;500;600&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <style>
     :root {
       --navy: #0A192F;
@@ -20,6 +20,7 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
     body { font-family: 'Inter', sans-serif; color: var(--navy); background: var(--white); overflow-x: hidden; }
+    em, i { font-style: normal; }
 
     /* NAV */
     nav {
@@ -30,14 +31,14 @@
     }
     nav.scrolled { box-shadow: 0 2px 24px rgba(0,0,0,0.35); }
     .nav-inner {
-      max-width: 1280px; margin: 0 auto; padding: 18px 48px;
+      max-width: 1280px; margin: 0 auto; padding: 10px 48px;
       display: flex; align-items: center; justify-content: space-between;
     }
     .logo { text-decoration: none; display: flex; align-items: center; }
-    .logo-img { height: 48px; width: auto; display: block; }
+    .logo-img { height: 64px; width: auto; display: block; }
     .nav-links { display: flex; align-items: center; gap: 36px; list-style: none; }
     .nav-links a {
-      color: rgba(255,255,255,0.72); text-decoration: none; font-size: 11px;
+      color: rgba(255,255,255,0.72); text-decoration: none; font-size: 13px;
       font-weight: 500; letter-spacing: 0.13em; text-transform: uppercase; transition: color 0.2s;
     }
     .nav-links a:hover { color: var(--gold); }
@@ -55,7 +56,7 @@
     }
     #mobile-nav.open { display: flex; }
     #mobile-nav a {
-      display: block; padding: 14px 32px; font-size: 13px; font-weight: 500;
+      display: block; padding: 14px 32px; font-size: 15px; font-weight: 500;
       letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.72);
       text-decoration: none; border-bottom: 1px solid rgba(255,255,255,0.06); transition: color 0.2s;
     }
@@ -83,25 +84,27 @@
       opacity: 0; animation: fadeUp 0.8s ease forwards 0.3s;
     }
     .hero-title {
-      font-family: 'Newsreader', serif; font-size: clamp(40px, 6.5vw, 82px); font-weight: 600;
+      font-family: 'Newsreader', serif; font-size: clamp(40px, 6.5vw, 82px); font-weight: 500;
       color: var(--white); line-height: 1.08; letter-spacing: -0.025em; margin-bottom: 28px;
       opacity: 0; animation: fadeUp 0.8s ease forwards 0.5s;
     }
     .hero-sub {
-      font-size: clamp(14px, 1.6vw, 17px); color: rgba(255,255,255,0.82); line-height: 1.75;
+      font-size: clamp(16px, 1.6vw, 19px); color: #FFFFFF; line-height: 1.75;
       max-width: 660px; margin: 0 auto 16px; font-weight: 300;
+      text-shadow: 0 1px 6px rgba(0,0,0,0.7);
       opacity: 0; animation: fadeUp 0.8s ease forwards 0.7s;
     }
     .hero-cta {
       display: inline-block; background: var(--gold); color: var(--navy); text-decoration: none;
-      padding: 16px 48px; font-size: 12px; font-weight: 600; letter-spacing: 0.16em;
+      padding: 16px 48px; font-size: 14px; font-weight: 600; letter-spacing: 0.16em;
       text-transform: uppercase; transition: all 0.3s;
       opacity: 0; animation: fadeUp 0.8s ease forwards 0.9s;
     }
     .hero-cta:hover { background: var(--gold-light); transform: translateY(-2px); box-shadow: 0 8px 28px rgba(201,169,110,0.38); }
     .hero-sub2 {
-      font-size: clamp(13px, 1.4vw, 15px); color: rgba(255,255,255,0.6); line-height: 1.72;
+      font-size: clamp(16px, 1.5vw, 18px); color: #FFFFFF; line-height: 1.72;
       max-width: 580px; margin: 0 auto 36px; font-weight: 300;
+      text-shadow: 0 1px 6px rgba(0,0,0,0.7);
       opacity: 0; animation: fadeUp 0.8s ease forwards 0.85s;
     }
     .scroll-hint {
@@ -123,22 +126,22 @@
     @keyframes fadeIn { to { opacity: 1; } }
 
     /* FEATURED PRESS */
-    #featured-press { background: var(--navy); padding: 80px 48px; }
+    #featured-press { background: var(--navy); padding: 80px 48px 56px; }
     .press-card {
       max-width: 1280px; margin: 0 auto;
       display: grid; grid-template-columns: 320px 1fr; gap: 64px; align-items: center;
     }
     .press-badge { width: 100%; border-radius: 3px; object-fit: cover; display: block; }
-    .press-label { font-size: 11px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 20px; }
+    .press-label { font-size: 13px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 20px; }
     .press-headline {
-      font-family: 'Newsreader', serif; font-size: clamp(20px, 2.8vw, 34px);
-      color: var(--white); line-height: 1.32; font-weight: 500; font-style: italic; margin-bottom: 16px;
+      font-family: 'Newsreader', serif; font-size: clamp(22px, 2.8vw, 36px);
+      color: var(--white); line-height: 1.32; font-weight: 500; margin-bottom: 16px;
     }
-    .press-pub { font-size: 13px; color: rgba(255,255,255,0.42); letter-spacing: 0.04em; }
+    .press-pub { font-size: 15px; color: rgba(255,255,255,0.42); letter-spacing: 0.04em; }
 
     /* LOGO STRIP */
     #logo-strip { background: var(--off-white); padding: 56px 0; overflow: hidden; }
-    .strip-label { text-align: center; font-size: 11px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gray); margin-bottom: 36px; }
+    .strip-label { text-align: center; font-size: 13px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gray); margin-bottom: 36px; }
     .marquee-wrap { overflow: hidden; position: relative; }
     .marquee-wrap::before, .marquee-wrap::after { display: none; }
     .marquee-track {
@@ -157,8 +160,8 @@
     /* Per-logo size fixes */
     .press-logo img[alt="The Wall Street Journal"] { height: 68px; max-width: 360px; }
     .press-logo img[alt="Forbes"] { height: 32px; }
-    .press-logo img[alt="CNBC"] { height: 44px; }
-    .press-logo img[alt="TheGIST"] { height: 52px; max-width: 160px; }
+    .press-logo img[alt="CNBC"] { height: 64px; }
+    .press-logo img[alt="TheGIST"] { height: 72px; max-width: 220px; }
     .press-logo img[alt="BW BusinessWorld"] { height: 40px; max-width: 200px; }
     .press-logo img[alt="Golf Digest"] { height: 40px; }
 
@@ -169,12 +172,12 @@
     .intro-img { position: relative; height: 420px; overflow: hidden; }
     .intro-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 8s ease; }
     .intro-img:hover img { transform: scale(1.05); }
-    .section-label { font-size: 11px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 14px; }
+    .section-label { font-size: 13px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 14px; }
     .big-quote {
-      font-family: 'Newsreader', serif; font-size: clamp(26px, 3.2vw, 42px); font-weight: 600;
-      line-height: 1.22; color: var(--navy); letter-spacing: -0.02em; font-style: italic; margin-bottom: 28px;
+      font-family: 'Newsreader', serif; font-size: clamp(28px, 3.2vw, 44px); font-weight: 600;
+      line-height: 1.22; color: var(--navy); letter-spacing: -0.02em; margin-bottom: 28px;
     }
-    .body-text { font-size: 16px; line-height: 1.82; color: #4B5563; margin-bottom: 16px; }
+    .body-text { font-size: 18px; line-height: 1.82; color: #4B5563; margin-bottom: 16px; }
 
     .services-grid {
       max-width: 1280px; margin: 0 auto; padding: 0 48px 100px;
@@ -193,9 +196,9 @@
     }
     .svc-card:hover .svc-overlay { background: linear-gradient(to top, rgba(10,25,47,0.97) 0%, rgba(10,25,47,0.78) 100%); }
     .svc-content { position: absolute; bottom: 0; left: 0; right: 0; padding: 32px; }
-    .svc-num { font-size: 11px; font-weight: 600; letter-spacing: 0.2em; color: var(--gold); margin-bottom: 10px; }
-    .svc-title { font-family: 'Newsreader', serif; font-size: 22px; color: var(--white); font-weight: 600; line-height: 1.25; margin-bottom: 12px; }
-    .svc-body { font-size: 14px; color: rgba(255,255,255,0.76); line-height: 1.72; max-height: 0; overflow: hidden; transition: max-height 0.5s ease; }
+    .svc-num { font-size: 13px; font-weight: 600; letter-spacing: 0.2em; color: var(--gold); margin-bottom: 10px; }
+    .svc-title { font-family: 'DM Sans', sans-serif; font-size: 24px; color: var(--white); font-weight: 600; line-height: 1.25; margin-bottom: 12px; }
+    .svc-body { font-size: 16px; color: rgba(255,255,255,0.76); line-height: 1.72; max-height: 0; overflow: hidden; transition: max-height 0.5s ease; }
     .svc-card:hover .svc-body { max-height: 320px; }
 
     /* CLIENTS */
@@ -215,7 +218,7 @@
     .tile-head img[alt="Aunt Flow"] { max-height: 90px; max-width: 90px; }
     .tile-logo-text { font-family: 'Newsreader', serif; font-size: 22px; color: var(--white); font-weight: 500; }
     .tile-body { padding: 28px; }
-    .tile-body p { font-size: 14px; line-height: 1.72; color: #4B5563; margin-bottom: 20px; }
+    .tile-body p { font-size: 16px; line-height: 1.72; color: #4B5563; margin-bottom: 20px; }
     .video-wrap { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; margin-bottom: 12px; }
     .video-wrap iframe { position: absolute; top:0; left:0; width:100%; height:100%; border:none; }
     .spotlight-text {
@@ -224,17 +227,17 @@
       max-height: 320px; overflow-y: auto;
     }
     .spotlight-text p {
-      font-family: 'Newsreader', serif; font-size: 14px !important;
-      font-style: italic; line-height: 1.8; color: #374151 !important;
+      font-family: 'Inter', sans-serif; font-size: 16px !important;
+      line-height: 1.8; color: #374151 !important;
       margin-bottom: 14px !important;
     }
     .spotlight-text p:last-child { margin-bottom: 0 !important; }
     .tile-excerpt {
       padding: 16px; background: var(--off-white); border-left: 3px solid var(--gold);
-      font-family: 'Newsreader', serif; font-size: 14px; font-style: italic;
+      font-family: 'Newsreader', serif; font-size: 16px;
       line-height: 1.7; color: #374151;
     }
-    .tile-excerpt cite { display: block; margin-top: 8px; font-size: 11px; font-style: normal; color: #9CA3AF; }
+    .tile-excerpt cite { display: block; margin-top: 8px; font-size: 13px; color: #9CA3AF; }
 
     /* ALL CLIENTS */
     .all-clients { background: var(--navy); padding: 80px 48px; }
@@ -249,18 +252,18 @@
       padding: 48px 0; border-bottom: 1px solid rgba(255,255,255,0.07);
     }
     .client-row:last-child { border-bottom: none; }
-    .cr-num { font-size: 11px; font-weight: 600; letter-spacing: 0.2em; color: var(--gold); margin-bottom: 8px; }
-    .cr-name { font-family: 'Newsreader', serif; font-size: 21px; color: var(--white); font-weight: 500; line-height: 1.3; }
-    .cr-sector { font-size: 12px; color: rgba(255,255,255,0.38); margin-top: 6px; }
-    .cr-content h4 { font-size: 11px; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); margin: 20px 0 10px; }
+    .cr-num { font-size: 13px; font-weight: 600; letter-spacing: 0.2em; color: var(--gold); margin-bottom: 8px; }
+    .cr-name { font-family: 'Newsreader', serif; font-size: 23px; color: var(--white); font-weight: 500; line-height: 1.3; }
+    .cr-sector { font-size: 14px; color: rgba(255,255,255,0.38); margin-top: 6px; }
+    .cr-content h4 { font-size: 13px; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); margin: 20px 0 10px; }
     .cr-content h4:first-child { margin-top: 0; }
-    .cr-content p, .cr-content li { font-size: 15px; line-height: 1.78; color: rgba(255,255,255,0.68); }
+    .cr-content p, .cr-content li { font-size: 17px; line-height: 1.78; color: rgba(255,255,255,0.68); }
     .cr-content ul { list-style: none; display: flex; flex-direction: column; gap: 6px; }
     .cr-content ul li::before { content: '— '; color: var(--gold); }
-    .outcome { display: inline-block; background: rgba(201,169,110,0.14); color: var(--gold); font-size: 12px; padding: 6px 14px; margin-top: 14px; letter-spacing: 0.04em; }
+    .outcome { display: inline-block; background: rgba(201,169,110,0.14); color: var(--gold); font-size: 14px; padding: 6px 14px; margin-top: 14px; letter-spacing: 0.04em; }
 
     /* TESTIMONIALS */
-    #testimonials { background: var(--navy); padding: 100px 48px; }
+    #testimonials { background: var(--navy); padding: 64px 48px 100px; border-top: 1px solid rgba(201,169,110,0.28); }
     .testimonials-inner { max-width: 1280px; margin: 0 auto; }
     .t-header { text-align: center; margin-bottom: 64px; }
     .t-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; }
@@ -270,9 +273,9 @@
     }
     .t-card:hover { background: rgba(255,255,255,0.08); transform: translateY(-4px); }
     .t-mark { font-family: 'Newsreader', serif; font-size: 36px; color: var(--gold); line-height: 1; margin-bottom: 14px; }
-    .t-text { font-family: 'Newsreader', serif; font-size: 16px; line-height: 1.72; color: rgba(255,255,255,0.84); font-style: italic; margin-bottom: 24px; }
-    .t-author { font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); }
-    .t-role { font-size: 12px; color: rgba(255,255,255,0.38); margin-top: 4px; }
+    .t-text { font-family: 'Inter', sans-serif; font-size: 18px; line-height: 1.72; color: rgba(255,255,255,0.84); margin-bottom: 24px; }
+    .t-author { font-size: 14px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); }
+    .t-role { font-size: 14px; color: rgba(255,255,255,0.38); margin-top: 4px; }
 
     /* LEADERSHIP */
     #leadership { background: var(--white); padding: 100px 48px; }
@@ -285,25 +288,25 @@
       display: flex; align-items: center; justify-content: center;
     }
     .photo-placeholder span { font-family: 'Newsreader', serif; font-size: 56px; color: rgba(10,25,47,0.18); }
-    .team-name { font-family: 'Newsreader', serif; font-size: 22px; font-weight: 600; color: var(--navy); margin: 18px 0 4px; }
-    .team-role-label { font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); margin-bottom: 12px; }
-    .team-bio { font-size: 14px; line-height: 1.76; color: #4B5563; }
+    .team-name { font-family: 'Newsreader', serif; font-size: 24px; font-weight: 600; color: var(--navy); margin: 18px 0 4px; }
+    .team-role-label { font-size: 13px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); margin-bottom: 12px; }
+    .team-bio { font-size: 16px; line-height: 1.76; color: #4B5563; }
     .advisory { margin-top: 96px; padding-top: 56px; border-top: 1px solid var(--light-gray); }
-    .advisory-intro { font-size: 16px; line-height: 1.8; color: #4B5563; max-width: 720px; margin: 16px 0 48px; }
+    .advisory-intro { font-size: 18px; line-height: 1.8; color: #4B5563; max-width: 720px; margin: 16px 0 48px; }
     .advisory-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 28px; }
     .advisor {
       padding: 28px; border-left: 3px solid var(--gold);
       background: var(--off-white);
     }
-    .advisor-name { font-family: 'Newsreader', serif; font-size: 19px; font-weight: 600; color: var(--navy); margin-bottom: 5px; }
-    .advisor-role { font-size: 12px; color: var(--gray); line-height: 1.5; margin-bottom: 12px; }
-    .advisor-bio { font-size: 14px; line-height: 1.72; color: #4B5563; }
-    .advisory-note { margin-top: 28px; font-size: 14px; color: #9CA3AF; font-style: italic; }
+    .advisor-name { font-family: 'Newsreader', serif; font-size: 21px; font-weight: 600; color: var(--navy); margin-bottom: 5px; }
+    .advisor-role { font-size: 14px; color: var(--gray); line-height: 1.5; margin-bottom: 12px; }
+    .advisor-bio { font-size: 16px; line-height: 1.72; color: #4B5563; }
+    .advisory-note { margin-top: 28px; font-size: 16px; color: #9CA3AF; }
 
     /* WORK WITH US */
     #work { background: var(--off-white); padding: 100px 48px; }
     .work-inner { max-width: 760px; margin: 0 auto; text-align: center; }
-    .work-inner p { font-size: 17px; line-height: 1.82; color: #4B5563; margin-bottom: 18px; }
+    .work-inner p { font-size: 19px; line-height: 1.82; color: #4B5563; margin-bottom: 18px; }
     .work-link {
       display: inline-block; margin-top: 28px; font-size: 11px; font-weight: 600;
       letter-spacing: 0.16em; text-transform: uppercase; color: var(--navy);
@@ -314,7 +317,7 @@
     /* CONTACT */
     #contact { background: var(--navy); padding: 100px 48px; }
     .contact-inner { max-width: 1280px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1.6fr; gap: 80px; align-items: start; }
-    .contact-left p { font-size: 16px; line-height: 1.8; color: rgba(255,255,255,0.62); margin-top: 20px; }
+    .contact-left p { font-size: 18px; line-height: 1.8; color: rgba(255,255,255,0.62); margin-top: 20px; }
     .contact-form { display: flex; flex-direction: column; gap: 0; }
     .form-header {
       display: inline-block; background: var(--gold); color: var(--navy);
@@ -323,7 +326,7 @@
     }
     .form-group { margin-bottom: 24px; }
     .form-group-label {
-      font-family: 'Newsreader', serif; font-size: 24px; font-weight: 400;
+      font-family: 'Newsreader', serif; font-size: 26px; font-weight: 400;
       color: var(--white); margin-bottom: 8px; line-height: 1.2;
     }
     .form-group-label .req { font-size: 13px; color: rgba(255,255,255,0.45); font-family: 'Inter', sans-serif; font-weight: 400; }
@@ -333,7 +336,7 @@
     .form-field .req { font-size: 11px; color: rgba(255,255,255,0.35); }
     .form-field input, .form-field textarea {
       background: transparent; border: 1px solid rgba(255,255,255,0.25);
-      color: var(--white); padding: 13px 14px; font-size: 15px; font-family: 'Inter', sans-serif;
+      color: var(--white); padding: 13px 14px; font-size: 17px; font-family: 'Inter', sans-serif;
       outline: none; transition: border-color 0.2s; width: 100%;
     }
     .form-field input:focus, .form-field textarea:focus { border-color: var(--gold); }
@@ -349,11 +352,11 @@
     /* FOOTER */
     footer { background: #05101f; padding: 44px 48px; }
     .footer-inner { max-width: 1280px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
-    .footer-logo { font-family: 'Newsreader', serif; font-size: 17px; font-weight: 500; color: rgba(255,255,255,0.5); letter-spacing: 0.1em; text-transform: uppercase; }
+    .footer-logo { font-family: 'Newsreader', serif; font-size: 18px; font-weight: 500; color: rgba(255,255,255,0.5); letter-spacing: 0.1em; text-transform: uppercase; }
     .footer-nav { display: flex; gap: 28px; list-style: none; }
-    .footer-nav a { font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.35); text-decoration: none; transition: color 0.2s; }
+    .footer-nav a { font-size: 13px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.35); text-decoration: none; transition: color 0.2s; }
     .footer-nav a:hover { color: var(--gold); }
-    .footer-copy { font-size: 12px; color: rgba(255,255,255,0.25); }
+    .footer-copy { font-size: 14px; color: rgba(255,255,255,0.25); }
 
     /* SCROLL REVEAL */
     .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.72s ease, transform 0.72s ease; }
@@ -370,13 +373,13 @@
     @media (max-width: 768px) {
       .nav-links { display: none; }
       .hamburger { display: flex; }
-      .nav-inner { padding: 16px 24px; }
+      .nav-inner { padding: 10px 24px; }
       .hero-content { padding: 0 24px; }
       .press-card { grid-template-columns: 1fr; gap: 20px; }
       .press-badge { width: 52%; max-height: none; object-fit: contain; margin: 0 auto; }
       .press-headline { font-size: 22px; }
       .press-label { font-size: 13px; margin-bottom: 12px; }
-      .press-pub { font-size: 14px; }
+      .press-pub { font-size: 15px; }
       .services-intro-grid, .contact-inner { grid-template-columns: 1fr; }
       .services-grid, .featured-grid, .t-grid, .team-grid, .advisory-grid { grid-template-columns: 1fr; }
       .services-grid { gap: 16px; }
@@ -389,7 +392,9 @@
       .form-row { grid-template-columns: 1fr; }
       .footer-inner { flex-direction: column; gap: 20px; text-align: center; }
       .footer-nav { flex-wrap: wrap; justify-content: center; }
-      #featured-press, .all-clients, #testimonials, #work, #contact, #leadership { padding-left: 16px; padding-right: 16px; }
+      #featured-press { padding-left: 16px; padding-right: 16px; padding-bottom: 40px; }
+      .all-clients, #testimonials, #work, #contact, #leadership { padding-left: 16px; padding-right: 16px; }
+      #testimonials { padding-top: 48px; }
       .services-intro, .services-grid, .clients-header, .featured-grid, .all-clients-inner,
       .testimonials-inner, .leadership-inner, .work-inner { padding-left: 12px; padding-right: 12px; }
       .advisor { padding: 20px; }
@@ -399,7 +404,8 @@
       .press-logo img { height: 32px; max-width: 140px; }
       .press-logo img[alt="The Wall Street Journal"] { height: 52px; max-width: 260px; }
       .press-logo img[alt="Forbes"] { height: 26px; }
-      .press-logo img[alt="TheGIST"] { height: 68px; max-width: 180px; }
+      .press-logo img[alt="CNBC"] { height: 44px; }
+      .press-logo img[alt="TheGIST"] { height: 72px; max-width: 200px; }
       .marquee-track { gap: 28px; }
     }
   </style>
@@ -409,12 +415,12 @@
 <!-- NAV -->
 <nav id="main-nav">
   <div class="nav-inner">
-    <a href="#hero" class="logo"><img src="lanecraftlogo.png" alt="Lanecraft Lab" class="logo-img" /></a>
+    <a href="#hero" class="logo"><img src="finallogo.png" alt="Lanecraft Lab" class="logo-img" /></a>
     <ul class="nav-links">
       <li><a href="#services">Services</a></li>
       <li><a href="#clients">Clients</a></li>
       <li><a href="#testimonials">Press</a></li>
-      <li><a href="#leadership">Team</a></li>
+      <li><a href="#leadership">Leadership</a></li>
       <li><a href="#work">Careers</a></li>
       <li><a href="#contact" class="nav-cta">Partner With Us</a></li>
     </ul>
@@ -426,7 +432,7 @@
     <a href="#services" onclick="closeMenu()">Services</a>
     <a href="#clients" onclick="closeMenu()">Clients</a>
     <a href="#testimonials" onclick="closeMenu()">Press</a>
-    <a href="#leadership" onclick="closeMenu()">Team</a>
+    <a href="#leadership" onclick="closeMenu()">Leadership</a>
     <a href="#work" onclick="closeMenu()">Careers</a>
     <a href="#contact" onclick="closeMenu()">Contact</a>
   </div>
@@ -456,6 +462,48 @@
       <p class="press-label">Featured Press</p>
       <p class="press-headline">"From Wall Street Journal to Strategic Advisor: How Nish Amarnath Built Lanecraft Lab on the Power of Story Architecture"</p>
       <p class="press-pub">— Published by Founded by Women &nbsp;·&nbsp; October 2025</p>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+  <div class="testimonials-inner">
+    <div class="t-header reveal">
+      <p class="section-label" style="color:var(--gold)">What Clients &amp; The Media Are Saying</p>
+      <h2 class="section-title light" style="margin-top:10px">The work speaks for itself.</h2>
+    </div>
+    <div class="t-grid">
+      <div class="t-card reveal">
+        <div class="t-mark">"</div>
+        <p class="t-text">My experience with Nish was delightful, in every sense of the word. She not only asked the right questions to help me get more clarity on my goals, but validated my approach and suggested actionable items to develop my personal brand. And this was just over an hour of her time. Can't imagine what she can do with additional hours of engagement. Highly recommend her if you need strategic clarity and direction in your career!</p>
+        <p class="t-author">Quratulain Tejani</p>
+        <p class="t-role">Reporter, EQDerivatives &nbsp;·&nbsp; Aug. 2, 2025</p>
+      </div>
+      <div class="t-card reveal">
+        <div class="t-mark">"</div>
+        <p class="t-text">I thoroughly enjoyed dealing with a true professional both knowledgeable and caring. I would highly recommend Nish.</p>
+        <p class="t-author">Kevin J. Burke</p>
+        <p class="t-role">NYPD Lieutenant (Ret.) &nbsp;·&nbsp; July 8, 2025</p>
+      </div>
+      <div class="t-card reveal">
+        <div class="t-mark">"</div>
+        <p class="t-text">I am immensely grateful for Nish's time and effort she put into collaborating with me on my project. Her words are beautifully honest, insightful and catered to the audience I wanted. If given the opportunity, I would certainly work with her again. A breath of fresh air; thank you Nish!</p>
+        <p class="t-author">Anushka Kar</p>
+        <p class="t-role">Playwright, Producer &amp; Actor &nbsp;·&nbsp; June 16, 2025</p>
+      </div>
+      <div class="t-card reveal">
+        <div class="t-mark">"</div>
+        <p class="t-text">I worked with Nish to upgrade my resumé to make me more marketable. She really helped me take the content and layout to the next level. 10/10 would recommend!</p>
+        <p class="t-author">Rachel Curtis, LCSW</p>
+        <p class="t-role">Oct. 17, 2025</p>
+      </div>
+      <div class="t-card reveal">
+        <div class="t-mark">"</div>
+        <p class="t-text">Nish came prepared to our career coaching conversation. She asked great questions and had concrete feedback on how I could grow.</p>
+        <p class="t-author">Vasant Laplam</p>
+        <p class="t-role">Journalist &nbsp;·&nbsp; June 9, 2025</p>
+      </div>
     </div>
   </div>
 </section>
@@ -765,53 +813,10 @@
   </div>
 </section>
 
-<!-- TESTIMONIALS -->
-<section id="testimonials">
-  <div class="testimonials-inner">
-    <div class="t-header reveal">
-      <p class="section-label" style="color:var(--gold)">What Clients &amp; The Media Are Saying</p>
-      <h2 class="section-title light" style="margin-top:10px">The work speaks for itself.</h2>
-    </div>
-    <div class="t-grid">
-      <div class="t-card reveal">
-        <div class="t-mark">"</div>
-        <p class="t-text">My experience with Nish was delightful, in every sense of the word. She not only asked the right questions to help me get more clarity on my goals, but validated my approach and suggested actionable items to develop my personal brand. And this was just over an hour of her time. Can't imagine what she can do with additional hours of engagement. Highly recommend her if you need strategic clarity and direction in your career!</p>
-        <p class="t-author">Quratulain Tejani</p>
-        <p class="t-role">Reporter, EQDerivatives &nbsp;·&nbsp; Aug. 2, 2025</p>
-      </div>
-      <div class="t-card reveal">
-        <div class="t-mark">"</div>
-        <p class="t-text">I thoroughly enjoyed dealing with a true professional both knowledgeable and caring. I would highly recommend Nish.</p>
-        <p class="t-author">Kevin J. Burke</p>
-        <p class="t-role">NYPD Lieutenant (Ret.) &nbsp;·&nbsp; July 8, 2025</p>
-      </div>
-      <div class="t-card reveal">
-        <div class="t-mark">"</div>
-        <p class="t-text">I am immensely grateful for Nish's time and effort she put into collaborating with me on my project. Her words are beautifully honest, insightful and catered to the audience I wanted. If given the opportunity, I would certainly work with her again. A breath of fresh air; thank you Nish!</p>
-        <p class="t-author">Anushka Kar</p>
-        <p class="t-role">Playwright, Producer &amp; Actor &nbsp;·&nbsp; June 16, 2025</p>
-      </div>
-      <div class="t-card reveal">
-        <div class="t-mark">"</div>
-        <p class="t-text">I worked with Nish to upgrade my resumé to make me more marketable. She really helped me take the content and layout to the next level. 10/10 would recommend!</p>
-        <p class="t-author">Rachel Curtis, LCSW</p>
-        <p class="t-role">Oct. 17, 2025</p>
-      </div>
-      <div class="t-card reveal">
-        <div class="t-mark">"</div>
-        <p class="t-text">Nish came prepared to our career coaching conversation. She asked great questions and had concrete feedback on how I could grow.</p>
-        <p class="t-author">Vasant Laplam</p>
-        <p class="t-role">Journalist &nbsp;·&nbsp; June 9, 2025</p>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- LEADERSHIP -->
 <section id="leadership">
   <div class="leadership-inner">
-    <p class="section-label">Our Leadership</p>
-    <h2 class="section-title dark" style="margin-top:8px">The Team</h2>
+    <h2 class="section-title dark">The Leadership</h2>
 
     <div class="team-grid">
       <div class="team-card reveal">
@@ -859,17 +864,6 @@
       </div>
       <p class="advisory-note">Additional members will be listed here as the committee expands.</p>
     </div>
-  </div>
-</section>
-
-<!-- WORK WITH US -->
-<section id="work">
-  <div class="work-inner">
-    <p class="section-label" style="text-align:center">Careers</p>
-    <h2 class="section-title dark" style="text-align:center;margin-top:8px;margin-bottom:32px">Work With Us</h2>
-    <p>We're a lean, fast-moving environment and we believe in creativity, lateral thinking, critical thinking, efficiency and results. We're a fun team to work with, and you get exposure to high-ranking executives, influencers, seasoned editors and contributors, and more! As we continue to grow, we're also deepening select collaborations across our broader external network to support a growing mix of projects and engagements.</p>
-    <p>We're always open to hearing from strong public relations professionals, storytellers, content creators, and former journalists. So, if you'd like to explore working with us, feel free to reach out at comms@lanecraftlab.com.</p>
-    <a href="mailto:comms@lanecraftlab.com" class="work-link">Get in Touch</a>
   </div>
 </section>
 
@@ -925,6 +919,17 @@
   </div>
 </section>
 
+<!-- WORK WITH US -->
+<section id="work">
+  <div class="work-inner">
+    <p class="section-label" style="text-align:center">Careers</p>
+    <h2 class="section-title dark" style="text-align:center;margin-top:8px;margin-bottom:32px">Work With Us</h2>
+    <p>We're a lean, fast-moving environment and we believe in creativity, lateral thinking, critical thinking, efficiency and results. We're a fun team to work with, and you get exposure to high-ranking executives, influencers, seasoned editors and contributors, and more! As we continue to grow, we're also deepening select collaborations across our broader external network to support a growing mix of projects and engagements.</p>
+    <p>We're always open to hearing from strong public relations professionals, storytellers, content creators, and former journalists. So, if you'd like to explore working with us, feel free to reach out at comms@lanecraftlab.com.</p>
+    <a href="mailto:comms@lanecraftlab.com" class="work-link">Get in Touch</a>
+  </div>
+</section>
+
 <!-- FOOTER -->
 <footer>
   <div class="footer-inner">
@@ -932,7 +937,7 @@
     <ul class="footer-nav">
       <li><a href="#services">Services</a></li>
       <li><a href="#clients">Clients</a></li>
-      <li><a href="#leadership">Team</a></li>
+      <li><a href="#leadership">Leadership</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
     <p class="footer-copy">&copy; 2025 Lanecraft Lab. All rights reserved.</p>
