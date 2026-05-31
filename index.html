@@ -140,11 +140,7 @@
     #logo-strip { background: var(--off-white); padding: 56px 0; overflow: hidden; }
     .strip-label { text-align: center; font-size: 11px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gray); margin-bottom: 36px; }
     .marquee-wrap { overflow: hidden; position: relative; }
-    .marquee-wrap::before, .marquee-wrap::after {
-      content: ''; position: absolute; top: 0; bottom: 0; width: 100px; z-index: 2;
-    }
-    .marquee-wrap::before { left: 0; background: linear-gradient(to right, var(--off-white), transparent); }
-    .marquee-wrap::after { right: 0; background: linear-gradient(to left, var(--off-white), transparent); }
+    .marquee-wrap::before, .marquee-wrap::after { display: none; }
     .marquee-track {
       display: flex; gap: 72px; align-items: center;
       animation: marquee 28s linear infinite; width: max-content;
@@ -152,18 +148,15 @@
     .marquee-track:hover { animation-play-state: paused; }
     @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
     .press-logo {
-      display: flex; align-items: center; opacity: 0.55; transition: opacity 0.3s; cursor: default;
+      display: flex; align-items: center; opacity: 0.85; cursor: default;
     }
-    .press-logo:hover { opacity: 1; }
     .press-logo img {
       height: 44px; width: auto; max-width: 200px;
-      object-fit: contain; filter: grayscale(1);
-      transition: all 0.3s;
+      object-fit: contain;
     }
-    .press-logo:hover img { filter: grayscale(0); }
     /* Per-logo size fixes */
-    .press-logo img[alt="The Wall Street Journal"] { height: 56px; max-width: 320px; }
-    .press-logo img[alt="Forbes"] { height: 38px; }
+    .press-logo img[alt="The Wall Street Journal"] { height: 68px; max-width: 360px; }
+    .press-logo img[alt="Forbes"] { height: 32px; }
     .press-logo img[alt="CNBC"] { height: 44px; }
     .press-logo img[alt="TheGIST"] { height: 52px; max-width: 160px; }
     .press-logo img[alt="BW BusinessWorld"] { height: 40px; max-width: 200px; }
@@ -379,7 +372,11 @@
       .hamburger { display: flex; }
       .nav-inner { padding: 16px 24px; }
       .hero-content { padding: 0 24px; }
-      .press-card { grid-template-columns: 1fr; gap: 28px; }
+      .press-card { grid-template-columns: 1fr; gap: 20px; }
+      .press-badge { width: 52%; max-height: none; object-fit: contain; margin: 0 auto; }
+      .press-headline { font-size: 22px; }
+      .press-label { font-size: 13px; margin-bottom: 12px; }
+      .press-pub { font-size: 14px; }
       .services-intro-grid, .contact-inner { grid-template-columns: 1fr; }
       .services-grid, .featured-grid, .t-grid, .team-grid, .advisory-grid { grid-template-columns: 1fr; }
       .services-grid { gap: 16px; }
@@ -392,13 +389,18 @@
       .form-row { grid-template-columns: 1fr; }
       .footer-inner { flex-direction: column; gap: 20px; text-align: center; }
       .footer-nav { flex-wrap: wrap; justify-content: center; }
-      #featured-press, .all-clients, #testimonials, #work, #contact { padding-left: 24px; padding-right: 24px; }
+      #featured-press, .all-clients, #testimonials, #work, #contact, #leadership { padding-left: 16px; padding-right: 16px; }
       .services-intro, .services-grid, .clients-header, .featured-grid, .all-clients-inner,
-      .testimonials-inner, .leadership-inner, .work-inner { padding-left: 16px; padding-right: 16px; }
+      .testimonials-inner, .leadership-inner, .work-inner { padding-left: 12px; padding-right: 12px; }
       .advisor { padding: 20px; }
-      .team-photo { width: 100%; }
+      .team-photo { width: 100%; border-radius: 4px; }
       .advisory-grid { gap: 16px; }
-      .team-grid { gap: 24px; }
+      .team-grid { gap: 32px; margin-top: 32px; }
+      .press-logo img { height: 32px; max-width: 140px; }
+      .press-logo img[alt="The Wall Street Journal"] { height: 52px; max-width: 260px; }
+      .press-logo img[alt="Forbes"] { height: 26px; }
+      .press-logo img[alt="TheGIST"] { height: 68px; max-width: 180px; }
+      .marquee-track { gap: 28px; }
     }
   </style>
 </head>
@@ -435,7 +437,6 @@
   <div class="hero-bg"></div>
   <div class="hero-overlay"></div>
   <div class="hero-content">
-    <span class="hero-eyebrow">Strategic Communications &amp; PR</span>
     <h1 class="hero-title">Everyone has a unique<br>story to tell.</h1>
     <p class="hero-sub">A story that helps millions of other people when it lands in the right channels. We help B2B and B2C brands strengthen their bottom lines by ensuring their stories get out into the world.</p>
     <p class="hero-sub2">We believe there's always a good story to be told, and there's always a journalist who wants to write it, and a podcast host who wants to tell it. We are extremely client-focused. We understand how newsroom decisions drive stories. We move fast, pitch smart, and write well.</p>
