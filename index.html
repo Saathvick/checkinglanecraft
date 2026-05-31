@@ -320,26 +320,36 @@
     #contact { background: var(--navy); padding: 100px 48px; }
     .contact-inner { max-width: 1280px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1.6fr; gap: 80px; align-items: start; }
     .contact-left p { font-size: 16px; line-height: 1.8; color: rgba(255,255,255,0.62); margin-top: 20px; }
-    .contact-form { display: flex; flex-direction: column; gap: 18px; }
+    .contact-form { display: flex; flex-direction: column; gap: 0; }
+    .form-header {
+      display: inline-block; background: var(--gold); color: var(--navy);
+      font-size: 11px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase;
+      padding: 5px 10px; margin-bottom: 32px; align-self: flex-start;
+    }
+    .form-group { margin-bottom: 24px; }
+    .form-group-label {
+      font-family: 'Newsreader', serif; font-size: 24px; font-weight: 400;
+      color: var(--white); margin-bottom: 8px; line-height: 1.2;
+    }
+    .form-group-label .req { font-size: 13px; color: rgba(255,255,255,0.45); font-family: 'Inter', sans-serif; font-weight: 400; }
     .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-    .form-field { display: flex; flex-direction: column; gap: 7px; }
-    .form-field label { font-size: 10px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.45); }
-    .form-field input, .form-field textarea, .form-field select {
-      background: rgba(255,255,255,0.055); border: 1px solid rgba(255,255,255,0.11);
-      color: var(--white); padding: 13px 16px; font-size: 15px; font-family: 'Inter', sans-serif;
-      outline: none; transition: border-color 0.2s; border-radius: 1px; width: 100%;
+    .form-field { display: flex; flex-direction: column; gap: 6px; }
+    .form-field label { font-size: 12px; font-weight: 400; color: rgba(255,255,255,0.5); font-family: 'Inter', sans-serif; }
+    .form-field .req { font-size: 11px; color: rgba(255,255,255,0.35); }
+    .form-field input, .form-field textarea {
+      background: transparent; border: 1px solid rgba(255,255,255,0.25);
+      color: var(--white); padding: 13px 14px; font-size: 15px; font-family: 'Inter', sans-serif;
+      outline: none; transition: border-color 0.2s; width: 100%;
     }
-    .form-field input:focus, .form-field textarea:focus, .form-field select:focus { border-color: var(--gold); }
-    .form-field input::placeholder, .form-field textarea::placeholder { color: rgba(255,255,255,0.22); }
-    .form-field select { appearance: none; cursor: pointer; }
-    .form-field select option { background: var(--navy-mid); }
-    .form-field textarea { height: 136px; resize: vertical; }
+    .form-field input:focus, .form-field textarea:focus { border-color: var(--gold); }
+    .form-field textarea { height: 150px; resize: vertical; }
     .form-btn {
-      align-self: flex-start; background: var(--gold); color: var(--navy); border: none;
-      padding: 15px 42px; font-size: 12px; font-weight: 600; letter-spacing: 0.15em;
-      text-transform: uppercase; cursor: pointer; transition: all 0.3s;
+      align-self: flex-start; background: transparent; color: var(--white);
+      border: 2px solid var(--white); padding: 18px 60px; font-size: 12px; font-weight: 600;
+      letter-spacing: 0.18em; text-transform: uppercase; cursor: pointer; transition: all 0.3s;
+      margin-top: 8px;
     }
-    .form-btn:hover { background: var(--gold-light); transform: translateY(-2px); }
+    .form-btn:hover { background: var(--white); color: var(--navy); }
 
     /* FOOTER */
     footer { background: #05101f; padding: 44px 48px; }
@@ -851,46 +861,49 @@
     <div class="contact-left">
       <p class="section-label" style="color:var(--gold)">Contact Us</p>
       <h2 class="section-title light" style="margin-top:8px">Bring Us the Brief.</h2>
-      <p>Do you feel you need a visibility push or help with strategic communications and market-facing messaging? Bring us the brief, the bottleneck, and the messy middle. We're here for all that.</p>
-      <p>We review and respond to every inquiry. We assess alignment and fit. And we're always happy to hop on a call and provide recommendations.</p>
+      <p>Do you feel you need a visibility push or help with strategic communications and market-facing messaging support? Bring us the brief, the bottleneck, and the messy middle. We're here for all that. We'll carry you through to the end.</p>
+      <p>We review and respond to every inquiry. We assess alignment and fit. And we're always happy to hop on our call and provide recommendations.</p>
+      <p>Please use this contact form as a reference template.</p>
     </div>
     <form class="contact-form" id="contact-form" onsubmit="handleSubmit(event)">
-      <div class="form-row">
-        <div class="form-field">
-          <label>First Name</label>
-          <input type="text" placeholder="Jane" required />
+      <p class="form-header">Please Complete the Form Below</p>
+
+      <div class="form-group">
+        <p class="form-group-label">Name</p>
+        <div class="form-row">
+          <div class="form-field">
+            <label>First Name <span class="req">(required)</span></label>
+            <input type="text" required />
+          </div>
+          <div class="form-field">
+            <label>Last Name <span class="req">(required)</span></label>
+            <input type="text" required />
+          </div>
         </div>
+      </div>
+
+      <div class="form-group">
+        <p class="form-group-label">Email Address <span class="req">(required)</span></p>
         <div class="form-field">
-          <label>Last Name</label>
-          <input type="text" placeholder="Smith" required />
+          <input type="email" required />
         </div>
       </div>
-      <div class="form-field">
-        <label>Company / Organization</label>
-        <input type="text" placeholder="Acme Corp" />
+
+      <div class="form-group">
+        <p class="form-group-label">Subject <span class="req">(required)</span></p>
+        <div class="form-field">
+          <input type="text" required />
+        </div>
       </div>
-      <div class="form-field">
-        <label>Email Address</label>
-        <input type="email" placeholder="jane@company.com" required />
+
+      <div class="form-group">
+        <p class="form-group-label">Message <span class="req">(required)</span></p>
+        <div class="form-field">
+          <textarea required></textarea>
+        </div>
       </div>
-      <div class="form-field">
-        <label>Service Area</label>
-        <select>
-          <option value="" disabled selected>What brings you to Lanecraft Lab?</option>
-          <option>Stakeholder Engagement &amp; Positioning</option>
-          <option>Earned Media Visibility</option>
-          <option>Media &amp; Public Voice Strategy</option>
-          <option>Processes &amp; Systems Optimization</option>
-          <option>Corporate Governance</option>
-          <option>Sustainability &amp; Energy Efficiency</option>
-          <option>General Inquiry</option>
-        </select>
-      </div>
-      <div class="form-field">
-        <label>Tell Us About Your Goals</label>
-        <textarea placeholder="Share what you're working on, where you're stuck, or what visibility goal you're chasing..."></textarea>
-      </div>
-      <button type="submit" class="form-btn">Send Inquiry</button>
+
+      <button type="submit" class="form-btn">Submit</button>
     </form>
   </div>
 </section>
