@@ -1041,8 +1041,12 @@
       headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
       body: JSON.stringify(data)
     })
-    .then(r => r.json())
-    .then(() => {
+    .then(r => {
+      if (!r.ok) throw new Error('status ' + r.status);
+      return r.json();
+    })
+    .then(json => {
+      if (json.success === 'false' || json.success === false) throw new Error('rejected');
       btn.textContent = 'Sent — Thank you!';
       btn.style.cssText = 'background:#4ADE80;color:#fff;border-color:#4ADE80';
       setTimeout(() => {
